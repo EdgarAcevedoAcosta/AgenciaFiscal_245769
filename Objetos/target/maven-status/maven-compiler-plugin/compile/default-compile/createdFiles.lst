@@ -1,0 +1,10 @@
+entities\Cliente.class
+entities\AdquiereLiciencia.class
+entities\Empaca.class
+entities\LicenciaCostos.class
+entities\Automovil.class
+entities\Motocicleta.class
+entities\Camion.class
+entities\PlacasCosto.class
+entities\Vehiculo.class
+entities\CatalogoMarcaLinea.class
