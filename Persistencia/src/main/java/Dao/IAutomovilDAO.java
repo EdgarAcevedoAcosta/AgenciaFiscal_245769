@@ -4,7 +4,9 @@
  */
 package Dao;
 
+import entities.AdquiereLiciencia;
 import entities.Automovil;
+import java.util.List;
 
 /**
  *
@@ -13,6 +15,6 @@ import entities.Automovil;
 public interface IAutomovilDAO {
     public void agregar(Automovil automovil);
     //public void actualizar(Automovil adLicVieja, Automovil adLicNueva);
-    public void consultar(Long idAuto);
-    public void consultarTodas();
+    public Automovil consultar(Long idAuto);
+    public List<Automovil> consultarTodas();
 }

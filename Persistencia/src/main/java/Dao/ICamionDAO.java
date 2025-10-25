@@ -5,6 +5,7 @@
 package Dao;
 
 import entities.Camion;
+import java.util.List;
 
 /**
  *
@@ -12,7 +13,7 @@ import entities.Camion;
  */
 public interface ICamionDAO {
     public void agregar(Camion camion);
-    public void actualizar(Camion camionViej, Camion CamionNuev);
-    public void consultar(Long idCamion);
-    public void consultarTodas();
+    //public void actualizar(Long id, Camion CamionNuev);
+    public Camion consultar(Long idCamion);
+    public List<Camion> consultarTodas();
 }

@@ -6,6 +6,7 @@ package Dao;
 
 import entities.AdquiereLiciencia;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
@@ -13,7 +14,7 @@ import java.sql.SQLException;
  */
 public interface IAdquiereLicenciaDAO {
     public void agregar(AdquiereLiciencia adquiereLicencia)throws SQLException;
-    public void actualizar(AdquiereLiciencia adLicVieja, AdquiereLiciencia adLicNueva)throws SQLException;
-    public void consultar(Long idAdLic)throws SQLException;
-    public void consultarTodas()throws SQLException;
+    public void actualizar(Long id, AdquiereLiciencia adLicNueva)throws SQLException;
+    public AdquiereLiciencia consultar(Long idAdLic)throws SQLException;
+    public List<AdquiereLiciencia> consultarTodas()throws SQLException;
 }
