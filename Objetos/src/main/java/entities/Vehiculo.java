@@ -27,7 +27,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Vehiculo")
 @Inheritance (strategy = InheritanceType.JOINED)
-public abstract class Vehiculo implements Serializable {
+public class Vehiculo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -35,8 +35,9 @@ public abstract class Vehiculo implements Serializable {
     @Column(name="id_Vehiculo", nullable=false)
     private Long id_Vehiculo;
     
-    @OneToMany(mappedBy= "CatalogoMarcaLinea", cascade= CascadeType.PERSIST)        
-    private List<CatalogoMarcaLinea> catalogoMarcaLinea;
+    @ManyToOne
+    @JoinColumn(name="id_CatalogoMarcaLinea")
+    private CatalogoMarcaLinea catMarcaLinea;
     
     @ManyToOne
     @JoinColumn(name="id_Cliente")
@@ -58,13 +59,15 @@ public abstract class Vehiculo implements Serializable {
         this.id_Vehiculo = id_Vehiculo;
     }
 
-    public List<CatalogoMarcaLinea> getCatalogoMarcaLinea() {
-        return catalogoMarcaLinea;
+    public CatalogoMarcaLinea getCatMarcaLinea() {
+        return catMarcaLinea;
     }
 
-    public void setCatalogoMarcaLinea(List<CatalogoMarcaLinea> catalogoMarcaLinea) {
-        this.catalogoMarcaLinea = catalogoMarcaLinea;
+    public void setCatMarcaLinea(CatalogoMarcaLinea catMarcaLinea) {
+        this.catMarcaLinea = catMarcaLinea;
     }
+
+    
 
     public Cliente getCliente() {
         return cliente;

@@ -20,7 +20,7 @@ import javax.persistence.criteria.CriteriaQuery;
 public class VehiculosDAO implements IVehiculosDAO {
     private EntityManagerFactory managerFactory;
 
-    public VehiculosDAO(EntityManagerFactory managerFactory) {
+    public VehiculosDAO() {
         this.managerFactory = Persistence.createEntityManagerFactory("AgenciaFiscalPersist");
     }
 

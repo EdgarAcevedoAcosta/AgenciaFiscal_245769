@@ -20,10 +20,9 @@ import javax.persistence.criteria.CriteriaQuery;
 public class AdquiereLicenciaDAO implements IAdquiereLicenciaDAO{
     private EntityManagerFactory managerFactory;
 
-    public AdquiereLicenciaDAO(EntityManagerFactory managerFactory) {
+    public AdquiereLicenciaDAO() {
         this.managerFactory = Persistence.createEntityManagerFactory("AgenciaFiscalPersist");
     }
-    
     
     @Override
     public void agregar(AdquiereLiciencia adquiereLicencia) throws SQLException {

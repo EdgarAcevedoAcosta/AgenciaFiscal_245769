@@ -5,7 +5,9 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -38,9 +41,9 @@ public class CatalogoMarcaLinea implements Serializable {
     @Column(name="marca")
     private String marca;
     
-    @ManyToOne
-    @JoinColumn(name="id_Vehiculo")
-    private Vehiculo vehiculo;
+    
+    @OneToMany(mappedBy= "Vehiculo", cascade= CascadeType.PERSIST)        
+    private List<Vehiculo> vehiculos;
 
     public CatalogoMarcaLinea(Long id_CatalogoMarcaLinea, String modelo, String linea, String marca) {
         this.id_CatalogoMarcaLinea = id_CatalogoMarcaLinea;
@@ -90,13 +93,14 @@ public class CatalogoMarcaLinea implements Serializable {
         this.marca = marca;
     }
 
-    public Vehiculo getVehiculo() {
-        return vehiculo;
+    public List<Vehiculo> getVehiculos() {
+        return vehiculos;
     }
 
-    public void setVehiculo(Vehiculo vehiculo) {
-        this.vehiculo = vehiculo;
+    public void setVehiculos(List<Vehiculo> vehiculos) {
+        this.vehiculos = vehiculos;
     }
+
 
     @Override
     public int hashCode() {

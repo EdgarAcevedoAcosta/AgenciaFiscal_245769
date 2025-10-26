@@ -20,7 +20,7 @@ import javax.persistence.criteria.CriteriaQuery;
 public class PlacasCostosDAO implements IPlacasCostosDAO {
     private EntityManagerFactory managerFactory;
 
-    public PlacasCostosDAO(EntityManagerFactory managerFactory) {
+    public PlacasCostosDAO() {
         this.managerFactory = Persistence.createEntityManagerFactory("AgenciaFiscalPersist");
     }
 

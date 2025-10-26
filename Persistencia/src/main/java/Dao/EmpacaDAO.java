@@ -20,7 +20,7 @@ import javax.persistence.criteria.CriteriaQuery;
 public class EmpacaDAO implements IEmplacaDAO{
     private EntityManagerFactory managerFactory;
 
-    public EmpacaDAO(EntityManagerFactory managerFactory) {
+    public EmpacaDAO() {
         this.managerFactory = Persistence.createEntityManagerFactory("AgenciaFiscalPersist");
     }
 

@@ -21,7 +21,7 @@ import javax.persistence.criteria.CriteriaQuery;
 public class ClienteDAO implements IClienteDAO {
     private EntityManagerFactory managerFactory;
 
-    public ClienteDAO(EntityManagerFactory managerFactory) {
+    public ClienteDAO() {
         this.managerFactory = Persistence.createEntityManagerFactory("AgenciaFiscalPersist");
     }
     

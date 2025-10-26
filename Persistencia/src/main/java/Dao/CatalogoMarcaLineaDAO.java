@@ -20,7 +20,7 @@ import javax.persistence.criteria.CriteriaQuery;
 public class CatalogoMarcaLineaDAO implements ICatalogoMarcaLineaDAO {
     private EntityManagerFactory managerFactory;
 
-    public CatalogoMarcaLineaDAO(EntityManagerFactory managerFactory) {
+    public CatalogoMarcaLineaDAO() {
         this.managerFactory = Persistence.createEntityManagerFactory("AgenciaFiscalPersist");
     }
     
