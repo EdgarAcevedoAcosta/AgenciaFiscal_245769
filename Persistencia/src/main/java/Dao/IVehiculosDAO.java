@@ -5,6 +5,7 @@
 package Dao;
 
 import entities.Vehiculo;
+import java.util.List;
 
 /**
  *
@@ -14,5 +15,5 @@ public interface IVehiculosDAO {
     public void agregar(Vehiculo vehiculo);
     //public void actualizar(Vehiculo adLicVieja, Vehiculo adLicNueva);
     public Vehiculo consultar(Long idAdLic);
-    public void consultarTodas();
+    public List<Vehiculo> consultarTodas();
 }
