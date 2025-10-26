@@ -4,37 +4,102 @@
  */
 package Dao;
 
+import entities.AdquiereLiciencia;
 import entities.Empaca;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
 
 /**
  *
  * @author edgar
  */
 public class EmpacaDAO implements IEmplacaDAO{
+    private EntityManagerFactory managerFactory;
+
+    public EmpacaDAO(EntityManagerFactory managerFactory) {
+        this.managerFactory = Persistence.createEntityManagerFactory("AgenciaFiscalPersist");
+    }
 
     @Override
     public void agregar(Empaca emplaca) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        EntityManager em = managerFactory.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(emplaca);
+        em.getTransaction().commit();
+        System.out.println("Se agrego Adquiere Licencia");
     }
 
     @Override
-    public void actualizar(Empaca adLicVieja, Empaca adLicNueva) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void actualizar(Long idEmplaca, Empaca adLicNueva) {
+EntityManager em = managerFactory.createEntityManager();
+        em.getTransaction().begin();
+        Empaca adLic=em.find(Empaca.class, idEmplaca);
+        if(adLic!=null){
+            adLic.setCostoTotal(adLicNueva.getCostoTotal());
+            adLic.setEstado(adLicNueva.getEstado());
+            adLic.setFechaEmision(adLicNueva.getFechaEmision());
+            adLic.setFechaRecepcion(adLicNueva.getFechaRecepcion());
+            adLic.setNombrePlaca(adLicNueva.getNombrePlaca());
+            adLic.setAutomovil(adLicNueva.getAutomovil());
+            adLic.setPlacasCosto(adLicNueva.getPlacasCosto());
+            em.persist(adLic);
+            
+            System.out.println("Se actualizo correctamente");
+        }
+        em.getTransaction().commit();
     }
 
     @Override
-    public void cambiarEstado(Empaca empaca) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void cambiarEstado(Long idEmplaca) {
+        EntityManager em = managerFactory.createEntityManager();
+        em.getTransaction().begin();
+        Empaca adLic=em.find(Empaca.class, idEmplaca);
+        if(adLic==null){
+            System.out.println("No se encontro el la placa comprada");
+            
+        }else{
+            System.out.println("Este metodo solo se va a Usar Para la desactivación de alguna Placa");
+            System.out.println("Se cambio el Estado de la Placa");
+            if(adLic.getEstado()=="Activo"){
+                adLic.setEstado("Inactivo");
+                em.persist(adLic);
+            }else{
+                System.out.println("Esta Placa ya Esta Inactiva");
+            }
+
+        }
+        em.getTransaction().commit();
     }
 
     @Override
-    public void consultar(Long idEmplaca) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Empaca consultar(Long idEmplaca) {
+        EntityManager em = managerFactory.createEntityManager();
+        em.getTransaction().begin();
+        Empaca adLic=em.find(Empaca.class, idEmplaca);
+        em.getTransaction().commit();
+        if(adLic==null){
+            System.out.println("No se encontro el adquirir Licencia");
+            return null;
+        }else{
+            return adLic;
+        }    
     }
 
     @Override
-    public void consultarTodas() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<Empaca> consultarTodas() {
+        EntityManager em = managerFactory.createEntityManager();
+        em.getTransaction().begin();
+        CriteriaQuery cr= em.getCriteriaBuilder().createQuery();
+        cr.select(cr.from(Empaca.class));
+        Query q=em.createQuery(cr);
+        
+        List<Empaca> redes=q.getResultList();
+        em.getTransaction().commit();
+        return redes;
     }
     
 }

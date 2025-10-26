@@ -5,6 +5,7 @@
 package Dao;
 
 import entities.LicenciaCostos;
+import java.util.List;
 
 /**
  *
@@ -12,7 +13,7 @@ import entities.LicenciaCostos;
  */
 public interface ILicenciaCostos {
     public void agregar(LicenciaCostos liscenciaCosto);
-    public void actualizar(LicenciaCostos costoViejo, LicenciaCostos costoNuevo);
-    public void consultar(Long idLicenciaCosto);
-    public void consultarTodas();
+    public void actualizar(Long idLicenciaCosto, LicenciaCostos costoNuevo);
+    public LicenciaCostos consultar(Long idLicenciaCosto);
+    public List<LicenciaCostos> consultarTodas();
 }

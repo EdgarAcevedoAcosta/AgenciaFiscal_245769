@@ -5,6 +5,7 @@
 package Dao;
 
 import entities.Motocicleta;
+import java.util.List;
 
 /**
  *
@@ -13,6 +14,6 @@ import entities.Motocicleta;
 public interface IMotocicletaDAO {
     public void agregar(Motocicleta motocicleta);
     //public void actualizar(Motocicleta adLicVieja, Motocicleta adLicNueva);
-    public void consultar(Long idMoto);
-    public void consultarTodas();
+    public Motocicleta consultar(Long idMoto);
+    public List<Motocicleta> consultarTodas();
 }

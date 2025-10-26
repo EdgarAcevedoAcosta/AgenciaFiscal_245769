@@ -5,6 +5,7 @@
 package Dao;
 
 import entities.CatalogoMarcaLinea;
+import java.util.List;
 
 /**
  *
@@ -13,6 +14,6 @@ import entities.CatalogoMarcaLinea;
 public interface ICatalogoMarcaLineaDAO {
     public void agregar(CatalogoMarcaLinea catalogoML);
     //public void actualizar(CatalogoMarcaLinea adLicVieja, CatalogoMarcaLinea adLicNueva);
-    public void consultar(Long idCML);
-    public void consultarTodas();
+    public CatalogoMarcaLinea consultar(Long idCML);
+    public List<CatalogoMarcaLinea> consultarTodas();
 }

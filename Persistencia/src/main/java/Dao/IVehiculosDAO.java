@@ -13,6 +13,6 @@ import entities.Vehiculo;
 public interface IVehiculosDAO {
     public void agregar(Vehiculo vehiculo);
     //public void actualizar(Vehiculo adLicVieja, Vehiculo adLicNueva);
-    public void consultar(Long idAdLic);
+    public Vehiculo consultar(Long idAdLic);
     public void consultarTodas();
 }

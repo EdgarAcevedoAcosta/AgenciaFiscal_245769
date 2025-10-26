@@ -5,6 +5,7 @@
 package Dao;
 
 import entities.PlacasCosto;
+import java.util.List;
 
 /**
  *
@@ -12,7 +13,7 @@ import entities.PlacasCosto;
  */
 public interface IPlacasCostosDAO {
     public void agregar(PlacasCosto placasCostos);
-    public void actualizar(PlacasCosto costoViejo, PlacasCosto costoNueva);
-    public void consultar(Long idPlacaCost);
-    public void consultarTodas();
+    public void actualizar(Long idPlacaCost, PlacasCosto costoNueva);
+    public PlacasCosto consultar(Long idPlacaCost);
+    public List<PlacasCosto> consultarTodas();
 }

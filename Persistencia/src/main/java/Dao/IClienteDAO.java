@@ -5,6 +5,7 @@
 package Dao;
 
 import entities.Cliente;
+import java.util.List;
 
 /**
  *
@@ -12,7 +13,7 @@ import entities.Cliente;
  */
 public interface IClienteDAO {
     public void agregar(Cliente cliente);
-    public void actualizar(Cliente clienteViejo, Cliente clientecNuevo);
-    public void consultar(Long idCliente);
-    public void consultarTodos();
+    public void actualizar(Long idCliente, Cliente clientecNuevo);
+    public Cliente consultar(Long idCliente);
+    public List<Cliente> consultarTodos();
 }

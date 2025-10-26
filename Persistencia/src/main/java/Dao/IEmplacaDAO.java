@@ -4,7 +4,9 @@
  */
 package Dao;
 
+import entities.CatalogoMarcaLinea;
 import entities.Empaca;
+import java.util.List;
 
 /**
  *
@@ -12,8 +14,8 @@ import entities.Empaca;
  */
 public interface IEmplacaDAO {
     public void agregar(Empaca emplaca);
-    public void actualizar(Empaca adLicVieja, Empaca adLicNueva);
-    public void cambiarEstado(Empaca empaca);
-    public void consultar(Long idEmplaca);
-    public void consultarTodas();
+    public void actualizar(Long idEmplaca, Empaca adLicNueva);
+    public void cambiarEstado(Long idEmplaca);
+    public Empaca consultar(Long idEmplaca);
+    public List<Empaca> consultarTodas();
 }

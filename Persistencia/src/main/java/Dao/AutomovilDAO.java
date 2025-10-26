@@ -53,7 +53,7 @@ public class AutomovilDAO implements IAutomovilDAO{
         EntityManager em = managerFactory.createEntityManager();
         em.getTransaction().begin();
         CriteriaQuery cr= em.getCriteriaBuilder().createQuery();
-        cr.select(cr.from(AdquiereLiciencia.class));
+        cr.select(cr.from(Automovil.class));
         Query q=em.createQuery(cr);
         
         List<Automovil> redes=q.getResultList();
