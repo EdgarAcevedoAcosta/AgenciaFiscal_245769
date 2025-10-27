@@ -26,23 +26,147 @@ public class FrmMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton3 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        btnModuloLic = new javax.swing.JButton();
+        btnModuloPlac = new javax.swing.JButton();
+        btnModuloCons = new javax.swing.JButton();
+        btnModuloRepor = new javax.swing.JButton();
+
+        jButton3.setBackground(new java.awt.Color(153, 255, 153));
+        jButton3.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 0, 0));
+        jButton3.setText("Módulo de Placas");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 51, 51));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(204, 204, 204));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Tramites que se Pueden Hacer");
+
+        btnModuloLic.setBackground(new java.awt.Color(153, 255, 153));
+        btnModuloLic.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        btnModuloLic.setForeground(new java.awt.Color(0, 0, 0));
+        btnModuloLic.setText("Módulo de Licencias");
+        btnModuloLic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModuloLicActionPerformed(evt);
+            }
+        });
+
+        btnModuloPlac.setBackground(new java.awt.Color(153, 255, 153));
+        btnModuloPlac.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        btnModuloPlac.setForeground(new java.awt.Color(0, 0, 0));
+        btnModuloPlac.setText("Módulo de Placas");
+        btnModuloPlac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModuloPlacActionPerformed(evt);
+            }
+        });
+
+        btnModuloCons.setBackground(new java.awt.Color(153, 255, 153));
+        btnModuloCons.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        btnModuloCons.setForeground(new java.awt.Color(0, 0, 0));
+        btnModuloCons.setText("Módulo de Consultas");
+        btnModuloCons.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModuloConsActionPerformed(evt);
+            }
+        });
+
+        btnModuloRepor.setBackground(new java.awt.Color(153, 255, 153));
+        btnModuloRepor.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        btnModuloRepor.setForeground(new java.awt.Color(0, 0, 0));
+        btnModuloRepor.setText("Módulo de Reportes");
+        btnModuloRepor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModuloReporActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(290, 290, 290)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnModuloPlac, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnModuloLic, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnModuloCons, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnModuloRepor, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(150, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(37, 37, 37)
+                .addComponent(btnModuloLic, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(btnModuloPlac, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(btnModuloCons, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(btnModuloRepor, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(57, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 761, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 528, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnModuloLicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloLicActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModuloLicActionPerformed
+
+    private void btnModuloPlacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloPlacActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModuloPlacActionPerformed
+
+    private void btnModuloReporActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloReporActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModuloReporActionPerformed
+
+    private void btnModuloConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloConsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModuloConsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnModuloCons;
+    private javax.swing.JButton btnModuloLic;
+    private javax.swing.JButton btnModuloPlac;
+    private javax.swing.JButton btnModuloRepor;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
