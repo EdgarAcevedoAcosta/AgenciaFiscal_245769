@@ -125,8 +125,8 @@ public class Persistencia {
         cl1.setNombreCompleto("Edgar Alvaro Obregon");
         cl1.setTelefono("644-227-3820");
         cl1.setRfc("das56d4a65ds4");
-        List<Vehiculo> listaVeh1=new ArrayList<Vehiculo>();
-        cl1.setVehiculo(listaVeh1);
+        //List<Vehiculo> listaVeh1=new ArrayList<Vehiculo>();
+        //cl1.setVehiculo(listaVeh1);
         //cl1.setAdquiereLiciencia(adquiereLiciencia);
         new Dao.ClienteDAO().agregar(cl1);
         //Emplaca
