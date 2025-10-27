@@ -4,6 +4,8 @@
  */
 package presentacion;
 
+import presentacionReportes.FrmConsultaReporte;
+
 /**
  *
  * @author edgar
@@ -157,6 +159,8 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void btnModuloReporActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloReporActionPerformed
         // TODO add your handling code here:
+        FrmConsultaReporte frm= new FrmConsultaReporte();
+        frm.setVisible(true);
     }//GEN-LAST:event_btnModuloReporActionPerformed
 
     private void btnModuloConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloConsActionPerformed
