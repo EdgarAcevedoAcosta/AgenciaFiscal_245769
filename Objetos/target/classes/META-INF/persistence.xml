@@ -11,6 +11,7 @@
     <class>entities.LicenciaCostos</class>
     <class>entities.AdquiereLiciencia</class>
     <class>entities.Empaca</class>
+    <class>entities.CatalogoMarcaLinea</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/AgenciaFiscalBD?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
