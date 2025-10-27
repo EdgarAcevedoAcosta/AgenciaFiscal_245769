@@ -49,9 +49,9 @@ public class Cliente implements Serializable {
     
     @ManyToOne
     @JoinColumn(name="id_Licencia")
-    private AdquiereLiciencia adquiereLiciencia;
+    private AdquiereLiciencia adquiereLicienciaCliente;
     
-    @OneToMany(mappedBy= "Vehiculo", cascade= CascadeType.PERSIST)        
+    @OneToMany(mappedBy= "cliente", cascade= CascadeType.PERSIST)        
     private List<Vehiculo> vehiculo;
 
     public Cliente(Long id_Cliente, String nombreCompleto, String rfc, String discapacidad, LocalDate fechaNacimiento, String telefono) {
@@ -122,13 +122,15 @@ public class Cliente implements Serializable {
         this.telefono = telefono;
     }
 
-    public AdquiereLiciencia getAdquiereLiciencia() {
-        return adquiereLiciencia;
+    public AdquiereLiciencia getAdquiereLicienciaCliente() {
+        return adquiereLicienciaCliente;
     }
 
-    public void setAdquiereLiciencia(AdquiereLiciencia adquiereLiciencia) {
-        this.adquiereLiciencia = adquiereLiciencia;
+    public void setAdquiereLicienciaCliente(AdquiereLiciencia adquiereLicienciaCliente) {
+        this.adquiereLicienciaCliente = adquiereLicienciaCliente;
     }
+
+    
 
     public List<Vehiculo> getVehiculo() {
         return vehiculo;
@@ -138,11 +140,17 @@ public class Cliente implements Serializable {
         this.vehiculo = vehiculo;
     }
 
-    
     @Override
     public String toString() {
-        return "entities.Cliente{" + "id_Cliente=" + id_Cliente + ", nombreCompleto=" + nombreCompleto + ", rfc=" + rfc + ", discapacidad=" + discapacidad + ", fechaNacimiento=" + fechaNacimiento + ", telefono=" + telefono + '}';
+        return "Cliente{" + "id_Cliente=" + id_Cliente + ", nombreCompleto=" + nombreCompleto + ", rfc=" + rfc + ", discapacidad=" + discapacidad + ", fechaNacimiento=" + fechaNacimiento + ", telefono=" + telefono + ", adquiereLicienciaCliente=" + adquiereLicienciaCliente + ", vehiculo=" + vehiculo + '}';
     }
+
+    
+
+    
+
+    
+    
     
     
     

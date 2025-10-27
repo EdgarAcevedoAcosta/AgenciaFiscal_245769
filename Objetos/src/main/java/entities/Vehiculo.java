@@ -25,9 +25,9 @@ import javax.persistence.Table;
  * @author edgar
  */
 @Entity
-@Table(name="Vehiculo")
+//@Table(name="Vehiculo")
 @Inheritance (strategy = InheritanceType.JOINED)
-public class Vehiculo implements Serializable {
+public abstract class Vehiculo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -37,7 +37,7 @@ public class Vehiculo implements Serializable {
     
     @ManyToOne
     @JoinColumn(name="id_CatalogoMarcaLinea")
-    private CatalogoMarcaLinea catMarcaLinea;
+    private CatalogoMarcaLinea catalogoMarcaLinea;
     
     @ManyToOne
     @JoinColumn(name="id_Cliente")
@@ -59,13 +59,15 @@ public class Vehiculo implements Serializable {
         this.id_Vehiculo = id_Vehiculo;
     }
 
-    public CatalogoMarcaLinea getCatMarcaLinea() {
-        return catMarcaLinea;
+    public CatalogoMarcaLinea getCatalogoMarcaLinea() {
+        return catalogoMarcaLinea;
     }
 
-    public void setCatMarcaLinea(CatalogoMarcaLinea catMarcaLinea) {
-        this.catMarcaLinea = catMarcaLinea;
+    public void setCatalogoMarcaLinea(CatalogoMarcaLinea catalogoMarcaLinea) {
+        this.catalogoMarcaLinea = catalogoMarcaLinea;
     }
+
+    
 
     
 
@@ -103,7 +105,11 @@ public class Vehiculo implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Vehiculos[ id_Vehiculo=" + id_Vehiculo + " ]";
+        return "Vehiculo{" + "id_Vehiculo=" + id_Vehiculo + ", catalogoMarcaLinea=" + catalogoMarcaLinea + ", cliente=" + cliente + '}';
     }
+
+    
+
+    
     
 }

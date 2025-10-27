@@ -83,6 +83,10 @@ public class Persistencia {
                 
                 
         //AutoMovil
+        Automovil auto=new Automovil();
+        auto.setColor("Negro");
+        auto.setNumeroSerie("ABC-123");
+        new Dao.AutomovilDAO().agregar(auto);
         //Motocicleta
         //camion
         //LicenciaCostos
@@ -117,8 +121,10 @@ public class Persistencia {
         */
         //PlcacaCostos
         //Cliente/*
-        IClienteDAO peC=new ClienteDAO();
-        Cliente cl1=new Cliente();
+        /*IAutomovilDAO perA= new AutomovilDAO();
+        Automovil aut=new Automovil();*/
+        //IClienteDAO peC=new ClienteDAO();
+        /*Cliente cl1=new Cliente();
         cl1.setDiscapacidad("true");
         LocalDate fechan=LocalDate.parse("2004-01-26");
         cl1.setFechaNacimiento(fechan);
@@ -128,7 +134,7 @@ public class Persistencia {
         //List<Vehiculo> listaVeh1=new ArrayList<Vehiculo>();
         //cl1.setVehiculo(listaVeh1);
         //cl1.setAdquiereLiciencia(adquiereLiciencia);
-        new Dao.ClienteDAO().agregar(cl1);
+        new Dao.ClienteDAO().agregar(cl1);*/
         //Emplaca
         //AdquiereLicencia
         

@@ -45,7 +45,7 @@ public class ClienteDAO implements IClienteDAO {
             adLic.setNombreCompleto(clientecNuevo.getNombreCompleto());
             adLic.setRfc(clientecNuevo.getRfc());
             adLic.setTelefono(clientecNuevo.getTelefono());
-            adLic.setAdquiereLiciencia(clientecNuevo.getAdquiereLiciencia());
+            adLic.setAdquiereLicienciaCliente(clientecNuevo.getAdquiereLicienciaCliente());
             adLic.setVehiculo(clientecNuevo.getVehiculo());
             em.persist(adLic);
             

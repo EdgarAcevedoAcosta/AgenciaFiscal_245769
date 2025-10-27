@@ -40,7 +40,7 @@ public class PlacasCostosDAO implements IPlacasCostosDAO {
         PlacasCosto adLic=em.find(PlacasCosto.class, idPlacaCost);
         if(adLic!=null){
             adLic.setCosto(costoNueva.getCosto());
-            adLic.setEmpaca(costoNueva.getEmpaca());
+            adLic.setEmpacaCosto(costoNueva.getEmpacaCosto());
             adLic.setTipoTramite(costoNueva.getTipoTramite());
             em.persist(adLic);
             

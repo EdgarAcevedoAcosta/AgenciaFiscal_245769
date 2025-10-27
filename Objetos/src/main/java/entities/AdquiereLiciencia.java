@@ -43,10 +43,10 @@ public class AdquiereLiciencia implements Serializable {
     @Column(name="fechaExpiración")
     private LocalDate fechaExpiración;
     
-    @OneToMany(mappedBy= "LicenciaCostos", cascade= CascadeType.PERSIST)        
+    @OneToMany(mappedBy= "adquiereLiciencia", cascade= CascadeType.PERSIST)        
     private List<LicenciaCostos> licenciaCostos;
     
-    @OneToMany(mappedBy= "Cliente", cascade= CascadeType.PERSIST)        
+    @OneToMany(mappedBy= "adquiereLicienciaCliente", cascade= CascadeType.PERSIST)        
     private List<Cliente> cliente;
 
     public AdquiereLiciencia(Long id_Licencia, double costoTotal, int vigencia, LocalDate fechaCompra, LocalDate fechaExpiración) {

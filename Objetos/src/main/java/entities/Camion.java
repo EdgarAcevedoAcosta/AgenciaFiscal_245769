@@ -18,12 +18,12 @@ import javax.persistence.Table;
  * @author edgar
  */
 @Entity
-@Table(name="Camion")
+//@Table(name="Camion")
 public class Camion extends Vehiculo {
 
     private static final long serialVersionUID = 1L;
     //@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="numeroSerie")
     private String numeroSerie;
 

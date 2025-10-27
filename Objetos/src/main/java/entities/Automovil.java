@@ -20,12 +20,12 @@ import javax.persistence.Table;
  * @author edgar
  */
 @Entity
-@Table(name="Automovil")
+//@Table(name="Automovil")
 public class Automovil extends Vehiculo {
 
     private static final long serialVersionUID = 1L;
     //@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="numeroSerie")
     private String numeroSerie;
 
@@ -35,6 +35,10 @@ public class Automovil extends Vehiculo {
     @ManyToOne
     @JoinColumn(name="id_Placa")
     private Empaca empaca;
+    
+    /*@ManyToOne
+    @JoinColumn(name="id_CatalogoMarcaLinea")
+    private CatalogoMarcaLinea catalogoMarcaLinea;*/
 
     public Automovil(String numeroSerie, String color) {
         this.numeroSerie = numeroSerie;
@@ -60,6 +64,23 @@ public class Automovil extends Vehiculo {
         this.color = color;
     }
 
+    public Empaca getEmpaca() {
+        return empaca;
+    }
+
+    public void setEmpaca(Empaca empaca) {
+        this.empaca = empaca;
+    }
+/*
+    public CatalogoMarcaLinea getCatalogoMarcaLinea() {
+        return catalogoMarcaLinea;
+    }
+
+    public void setCatalogoMarcaLinea(CatalogoMarcaLinea catalogoMarcaLinea) {
+        this.catalogoMarcaLinea = catalogoMarcaLinea;
+    }
+    */
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -81,13 +102,15 @@ public class Automovil extends Vehiculo {
         final Automovil other = (Automovil) obj;
         return Objects.equals(this.numeroSerie, other.numeroSerie);
     }
-    
-    
 
     @Override
     public String toString() {
-        return "entities.Automovil{" + "numeroSerie=" + numeroSerie + ", color=" + color + '}';
+        return "Automovil{" + "numeroSerie=" + numeroSerie + ", color=" + color + ", empaca=" + empaca + '}';
     }
+    
+    
+
+    
     
     
 

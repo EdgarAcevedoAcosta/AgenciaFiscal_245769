@@ -42,8 +42,8 @@ public class CatalogoMarcaLinea implements Serializable {
     private String marca;
     
     
-    @OneToMany(mappedBy= "Vehiculo", cascade= CascadeType.PERSIST)        
-    private List<Vehiculo> vehiculos;
+    @OneToMany(mappedBy= "catalogoMarcaLinea", cascade= CascadeType.PERSIST)        
+    private List<Vehiculo> vehiculo;
 
     public CatalogoMarcaLinea(Long id_CatalogoMarcaLinea, String modelo, String linea, String marca) {
         this.id_CatalogoMarcaLinea = id_CatalogoMarcaLinea;
@@ -94,11 +94,11 @@ public class CatalogoMarcaLinea implements Serializable {
     }
 
     public List<Vehiculo> getVehiculos() {
-        return vehiculos;
+        return vehiculo;
     }
 
     public void setVehiculos(List<Vehiculo> vehiculos) {
-        this.vehiculos = vehiculos;
+        this.vehiculo = vehiculos;
     }
 
 
@@ -126,8 +126,10 @@ public class CatalogoMarcaLinea implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.CatalogoMarcaLinea{" + "id_CatalogoMarcaLinea=" + id_CatalogoMarcaLinea + ", modelo=" + modelo + ", linea=" + linea + ", marca=" + marca + '}';
+        return "CatalogoMarcaLinea{" + "id_CatalogoMarcaLinea=" + id_CatalogoMarcaLinea + ", modelo=" + modelo + ", linea=" + linea + ", marca=" + marca + ", vehiculo=" + vehiculo + '}';
     }
+
+    
 
    
 

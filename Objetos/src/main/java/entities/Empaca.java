@@ -46,10 +46,10 @@ public class Empaca implements Serializable {
     @Column(name="fechaRecepcion")
     private LocalDate fechaRecepcion;
     
-    @OneToMany(mappedBy= "PlacasCosto", cascade= CascadeType.PERSIST)        
+    @OneToMany(mappedBy= "empacaCosto", cascade= CascadeType.PERSIST)        
     private List<PlacasCosto> placasCosto;
 
-    @OneToMany(mappedBy= "Automovil", cascade= CascadeType.PERSIST)        
+    @OneToMany(mappedBy= "empaca", cascade= CascadeType.PERSIST)        
     private List<Automovil> automovil;
     
     public Empaca(Long id_Placa, String estado, String nombrePlaca, double costoTotal, LocalDate fechaEmision, LocalDate fechaRecepcion) {

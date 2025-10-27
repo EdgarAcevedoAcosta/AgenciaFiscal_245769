@@ -37,7 +37,7 @@ public class PlacasCosto implements Serializable {
     
     @ManyToOne
     @JoinColumn(name="id_Placa")
-    private Empaca empaca;
+    private Empaca empacaCosto;
 
     public PlacasCosto(Long id_PlacaCosto, double costo, String tipoTramite) {
         this.id_PlacaCosto = id_PlacaCosto;
@@ -77,13 +77,15 @@ public class PlacasCosto implements Serializable {
         this.tipoTramite = tipoTramite;
     }
 
-    public Empaca getEmpaca() {
-        return empaca;
+    public Empaca getEmpacaCosto() {
+        return empacaCosto;
     }
 
-    public void setEmpaca(Empaca empaca) {
-        this.empaca = empaca;
+    public void setEmpacaCosto(Empaca empacaCosto) {
+        this.empacaCosto = empacaCosto;
     }
+
+    
 
     @Override
     public int hashCode() {
