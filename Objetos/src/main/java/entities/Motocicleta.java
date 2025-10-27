@@ -20,7 +20,7 @@ import javax.persistence.Id;
 public class Motocicleta extends Vehiculo{
 
     private static final long serialVersionUID = 1L;
-    @Id
+    //@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="numeroSerie")
     private String numeroSerie;

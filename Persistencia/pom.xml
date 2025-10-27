@@ -18,4 +18,5 @@
         <maven.compiler.target>22</maven.compiler.target>
         <exec.mainClass>com.mycompany.persistencia.Persistencia</exec.mainClass>
     </properties>
+    
 </project>
