@@ -4,6 +4,8 @@
  */
 package presentacion;
 
+import presentacionConsultas.FrmBuscarPlaca;
+
 /**
  *
  * @author edgar
@@ -53,7 +55,7 @@ public class FrmQueQuiereConsultar extends javax.swing.JFrame {
         btnConsultar.setBackground(new java.awt.Color(153, 255, 153));
         btnConsultar.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnConsultar.setForeground(new java.awt.Color(0, 0, 0));
-        btnConsultar.setText("Cosultar Placa");
+        btnConsultar.setText("Consultar Placa");
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarActionPerformed(evt);
@@ -124,14 +126,19 @@ public class FrmQueQuiereConsultar extends javax.swing.JFrame {
 
     private void btnSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitudActionPerformed
         // TODO add your handling code here:
+        FrmSolicitarPlaca frmS=new FrmSolicitarPlaca();
+        frmS.setVisible(true);
     }//GEN-LAST:event_btnSolicitudActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
+        FrmBuscarPlaca frm =new FrmBuscarPlaca();
+        frm.setVisible(true);
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnModuloLic1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloLic1ActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnModuloLic1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

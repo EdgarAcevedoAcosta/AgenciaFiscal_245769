@@ -4,12 +4,14 @@
  */
 package presentacion;
 
+import persentacionUsuario.FrmSolicitudLicenciaInformacion;
+
 /**
  *
  * @author edgar
  */
 public class FrmSolicitudLicencia extends javax.swing.JFrame {
-
+    private int anhosLic;
     /**
      * Creates new form FrmSolicitudLicencia
      */
@@ -167,18 +169,23 @@ public class FrmSolicitudLicencia extends javax.swing.JFrame {
 
     private void btnHacerUnAnhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHacerUnAnhoActionPerformed
         // TODO add your handling code here:
+        
+        FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion(1);
     }//GEN-LAST:event_btnHacerUnAnhoActionPerformed
 
     private void btnModuloLic1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloLic1ActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnModuloLic1ActionPerformed
 
     private void btnHacerDosAnhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHacerDosAnhoActionPerformed
         // TODO add your handling code here:
+        FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion(2);
     }//GEN-LAST:event_btnHacerDosAnhoActionPerformed
 
     private void btnHacerTresAnho1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHacerTresAnho1ActionPerformed
         // TODO add your handling code here:
+        FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion(3);
     }//GEN-LAST:event_btnHacerTresAnho1ActionPerformed
 
     private void btnCostosLicenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCostosLicenciasActionPerformed

@@ -145,10 +145,14 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void btnModuloLicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloLicActionPerformed
         // TODO add your handling code here:
+        FrmSolicitudLicencia frmsl=new FrmSolicitudLicencia();
+        frmsl.setVisible(true);
     }//GEN-LAST:event_btnModuloLicActionPerformed
 
     private void btnModuloPlacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloPlacActionPerformed
         // TODO add your handling code here:
+        FrmQueQuiereConsultar frmQ=new FrmQueQuiereConsultar();
+        frmQ.setVisible(true);
     }//GEN-LAST:event_btnModuloPlacActionPerformed
 
     private void btnModuloReporActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloReporActionPerformed
@@ -157,6 +161,8 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void btnModuloConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloConsActionPerformed
         // TODO add your handling code here:
+        FrmSeleccioneAccion frmS=new FrmSeleccioneAccion();
+        frmS.setVisible(true);
     }//GEN-LAST:event_btnModuloConsActionPerformed
 
 

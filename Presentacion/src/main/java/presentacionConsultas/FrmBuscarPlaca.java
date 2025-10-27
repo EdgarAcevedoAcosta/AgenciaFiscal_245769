@@ -130,10 +130,13 @@ public class FrmBuscarPlaca extends javax.swing.JFrame {
 
     private void btnModuloLic1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloLic1ActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnModuloLic1ActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+        //Validacion
+        FrmInformacionPlaca frm=new FrmInformacionPlaca(txtNombrePlaca.getText());
     }//GEN-LAST:event_btnBuscarActionPerformed
 
 

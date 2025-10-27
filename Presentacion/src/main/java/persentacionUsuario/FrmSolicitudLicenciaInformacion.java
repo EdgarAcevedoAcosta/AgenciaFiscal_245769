@@ -4,16 +4,20 @@
  */
 package persentacionUsuario;
 
+import entities.Cliente;
+
 /**
  *
  * @author edgar
  */
 public class FrmSolicitudLicenciaInformacion extends javax.swing.JFrame {
-
+    private  Cliente cliente;
+    private int ahnosLic;
     /**
      * Creates new form FrmSolicitudLicenciaInformacion
      */
-    public FrmSolicitudLicenciaInformacion() {
+    public FrmSolicitudLicenciaInformacion(int anhosLic) {
+        this.ahnosLic=anhosLic;
         initComponents();
     }
 
@@ -146,14 +150,19 @@ public class FrmSolicitudLicenciaInformacion extends javax.swing.JFrame {
 
     private void btnModuloLic1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloLic1ActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnModuloLic1ActionPerformed
 
     private void btnCostosLicenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCostosLicenciasActionPerformed
         // TODO add your handling code here:
+        FrmAgregarUsuario frmA=new FrmAgregarUsuario(ahnosLic);
+        frmA.setVisible(true);
     }//GEN-LAST:event_btnCostosLicenciasActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
+        //validacion de rfc y busqueda del cliente 
+        //FrmConfirmacionCompra frmC=new FrmConfirmacionCompra();
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
 

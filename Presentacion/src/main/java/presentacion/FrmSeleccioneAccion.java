@@ -4,6 +4,8 @@
  */
 package presentacion;
 
+import presentacionConsultas.FrmConsultaGeneral;
+
 /**
  *
  * @author edgar
@@ -152,10 +154,14 @@ public class FrmSeleccioneAccion extends javax.swing.JFrame {
 
     private void btnSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitudActionPerformed
         // TODO add your handling code here:
+        FrmConsultaGeneral frmL=new FrmConsultaGeneral("Licencia");
+        frmL.setVisible(true);
     }//GEN-LAST:event_btnSolicitudActionPerformed
 
     private void btnSolicitud1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitud1ActionPerformed
         // TODO add your handling code here:
+        FrmConsultaGeneral frmL=new FrmConsultaGeneral("Placa");
+        frmL.setVisible(true);
     }//GEN-LAST:event_btnSolicitud1ActionPerformed
 
     private void btnSolicitud2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitud2ActionPerformed
@@ -164,6 +170,8 @@ public class FrmSeleccioneAccion extends javax.swing.JFrame {
 
     private void btnSolicitud3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitud3ActionPerformed
         // TODO add your handling code here:
+        FrmConsultaGeneral frmL=new FrmConsultaGeneral("Todos");
+        frmL.setVisible(true);
     }//GEN-LAST:event_btnSolicitud3ActionPerformed
 
 

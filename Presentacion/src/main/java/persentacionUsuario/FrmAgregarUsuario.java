@@ -4,16 +4,19 @@
  */
 package persentacionUsuario;
 
+import presentacion.FrmConfirmacionCompra;
+
 /**
  *
  * @author edgar
  */
 public class FrmAgregarUsuario extends javax.swing.JFrame {
-
+    private int anhosLic;
     /**
      * Creates new form FrmAgregarPlaca
      */
-    public FrmAgregarUsuario() {
+    public FrmAgregarUsuario(int anhosLic) {
+        this.anhosLic=anhosLic;
         initComponents();
     }
 
@@ -109,11 +112,6 @@ public class FrmAgregarUsuario extends javax.swing.JFrame {
         cbxDiscapacidad.setText("Sufres de Alguna Discapacidad");
         cbxDiscapacidad.setIconTextGap(7);
         cbxDiscapacidad.setMargin(new java.awt.Insets(5, 5, 5, 5));
-        cbxDiscapacidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxDiscapacidadActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -210,15 +208,15 @@ public class FrmAgregarUsuario extends javax.swing.JFrame {
 
     private void btnModuloLic1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloLic1ActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnModuloLic1ActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
+        //Validaciones y persistencia de agregar
+        
+        //FrmConfirmacionCompra frmC=new FrmConfirmacionCompra();
     }//GEN-LAST:event_btnConfirmarActionPerformed
-
-    private void cbxDiscapacidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxDiscapacidadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxDiscapacidadActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

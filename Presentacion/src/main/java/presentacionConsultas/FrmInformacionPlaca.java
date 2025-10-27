@@ -4,16 +4,20 @@
  */
 package presentacionConsultas;
 
+import entities.Automovil;
+import entities.CatalogoMarcaLinea;
+
 /**
  *
  * @author edgar
  */
 public class FrmInformacionPlaca extends javax.swing.JFrame {
-
+    private String placa;
     /**
      * Creates new form FrmInformacionPlaca
      */
-    public FrmInformacionPlaca() {
+    public FrmInformacionPlaca(String placa) {
+        this.placa=placa;
         initComponents();
     }
 
@@ -228,6 +232,7 @@ public class FrmInformacionPlaca extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
 

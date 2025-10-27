@@ -4,12 +4,14 @@
  */
 package presentacion;
 
+import persentacionUsuario.FrmAgregarPlaca;
+
 /**
  *
  * @author edgar
  */
 public class FrmSolicitarPlaca extends javax.swing.JFrame {
-
+    private String tipoTramite;
     /**
      * Creates new form FrmSolicitarPlaca
      */
@@ -142,14 +144,17 @@ public class FrmSolicitarPlaca extends javax.swing.JFrame {
 
     private void btnModuloLic1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloLic1ActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnModuloLic1ActionPerformed
 
     private void btnAutoNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutoNuevoActionPerformed
         // TODO add your handling code here:
+        FrmAgregarPlaca frmAg=new FrmAgregarPlaca("Automovil Nuevo");
     }//GEN-LAST:event_btnAutoNuevoActionPerformed
 
     private void btnAutoUsadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutoUsadoActionPerformed
         // TODO add your handling code here:
+        FrmAgregarPlaca frmAg=new FrmAgregarPlaca("Automovil Usado");
     }//GEN-LAST:event_btnAutoUsadoActionPerformed
 
     private void btnCostosPlacasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCostosPlacasActionPerformed

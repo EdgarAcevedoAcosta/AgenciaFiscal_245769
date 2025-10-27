@@ -9,11 +9,12 @@ package presentacionConsultas;
  * @author edgar
  */
 public class FrmConsultaGeneral extends javax.swing.JFrame {
-
+    private String tipoDeConsulta;
     /**
      * Creates new form FrmConsultaGeneral
      */
-    public FrmConsultaGeneral() {
+    public FrmConsultaGeneral(String tipoDeConsulta) {
+        this.tipoDeConsulta=tipoDeConsulta;
         initComponents();
     }
 
@@ -184,6 +185,7 @@ public class FrmConsultaGeneral extends javax.swing.JFrame {
 
     private void btnModuloLic1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloLic1ActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnModuloLic1ActionPerformed
 
     private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
@@ -192,6 +194,8 @@ public class FrmConsultaGeneral extends javax.swing.JFrame {
 
     private void btnFiltrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrar1ActionPerformed
         // TODO add your handling code here:
+        //FrmCostosPlacas frm=new FrmCostosPlacas(cliente, tipoDeConsulta);
+        //frm.setVisible(true);
     }//GEN-LAST:event_btnFiltrar1ActionPerformed
 
 

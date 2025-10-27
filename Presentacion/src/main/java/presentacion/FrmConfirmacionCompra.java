@@ -4,16 +4,22 @@
  */
 package presentacion;
 
+import entities.Cliente;
+import entities.PlacasCosto;
+
 /**
  *
  * @author edgar
  */
 public class FrmConfirmacionCompra extends javax.swing.JFrame {
-
+    private Cliente cliente;
+    private PlacasCosto placasCostos;
     /**
      * Creates new form FrmConfirmacionCompra
      */
-    public FrmConfirmacionCompra() {
+    public FrmConfirmacionCompra(Cliente cliente,PlacasCosto placasCostos) {
+        this.cliente=cliente;
+        this.placasCostos=placasCostos;
         initComponents();
     }
 
