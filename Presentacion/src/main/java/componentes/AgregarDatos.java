@@ -86,6 +86,14 @@ public class AgregarDatos {
         LocalDate fechaE= LocalDate.parse("2011-07-15");
         ad.setFechaCompra(fechaCompra);
         ad.setFechaExpiración(fechaE);
+        ad.setVigencia(new Dao.AdquiereLicenciaDAO().consultar(Long.valueOf(1)).getVigencia());
+        ad.setLicenciaCostos(new Dao.LicienciaCostosDAO().consultarTodas());
+        ad.setCostoTotal(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(1)).getCosto());
+        new Dao.AdquiereLicenciaDAO().agregar(ad);
+        
+        Cliente cl=new Dao.ClienteDAO().consultar(Long.valueOf(1));
+        cl.setAdquiereLicienciaCliente(ad);
+        new Dao.ClienteDAO().actualizar(Long.valueOf(1), cl);
     }
     public void AgregarAutomoviles(){
         Automovil au= new Automovil();
@@ -120,6 +128,17 @@ public class AgregarDatos {
         new Dao.CatalogoMarcaLineaDAO().agregar(cat4);
     }
     public void AgregarEmplaca(){
+        Empaca emplaca=new Empaca();
+        emplaca.setCostoTotal(new Dao.PlacasCostosDAO().consultar(Long.valueOf(1)).getCosto());
+        emplaca.setEstado("Activo");
+        LocalDate fechaCompra= LocalDate.parse("2010-07-15");
+        LocalDate fechaE= LocalDate.parse("2011-07-15");
+        emplaca.setFechaEmision(fechaCompra);
+        emplaca.setFechaRecepcion(fechaE);
+        emplaca.setNombrePlaca("FASF-987");
+        //validacion de lista de un solo id
+        emplaca.setPlacasCosto(new Dao.PlacasCostosDAO().consultarTodas());
+        
         
     }
     
