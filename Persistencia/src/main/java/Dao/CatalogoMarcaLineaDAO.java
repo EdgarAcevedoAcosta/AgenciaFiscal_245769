@@ -64,7 +64,7 @@ public class CatalogoMarcaLineaDAO implements ICatalogoMarcaLineaDAO {
 
     }
     
-    public CatalogoMarcaLinea consultaCatalogo(String marca, String linea, String modelo){
+    public Long consultaCatalogo(String marca, String linea, String modelo){
         EntityManager em = managerFactory.createEntityManager();
         em.getTransaction().begin();
         CriteriaBuilder cb=em.getCriteriaBuilder();
@@ -73,7 +73,7 @@ public class CatalogoMarcaLineaDAO implements ICatalogoMarcaLineaDAO {
         
         cq.select(root).where(cb.equal(root.get("marca"), marca)).where(cb.equal
         (root.get("linea"), linea)).where(cb.equal(root.get("modelo"), modelo));
-        CatalogoMarcaLinea resultado=em.createQuery(cq).getSingleResult();
+        Long resultado=em.createQuery(cq).getSingleResult().getId_CatalogoMarcaLinea();
         em.getTransaction().commit();
         if(resultado==null){
             System.out.println("No se encontro el cliente");

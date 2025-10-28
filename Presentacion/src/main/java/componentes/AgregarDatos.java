@@ -68,7 +68,7 @@ public class AgregarDatos {
         
         LicC6.setAñosVigencia(3);
         LicC6.setCosto(700.00);
-        LicC1.setAdquiereLiciencia(null);
+        
         new Dao.LicienciaCostosDAO().agregar(LicC1);
         new Dao.LicienciaCostosDAO().agregar(LicC2);
         new Dao.LicienciaCostosDAO().agregar(LicC3);
@@ -94,15 +94,20 @@ public class AgregarDatos {
         Cliente cl=new Dao.ClienteDAO().consultar(Long.valueOf(1));
         cl.setAdquiereLicienciaCliente(ad);
         new Dao.ClienteDAO().actualizar(Long.valueOf(1), cl);
+        
+        
     }
     public void AgregarAutomoviles(){
         Automovil au= new Automovil();
         au.setColor("Negro");
         au.setNumeroSerie("ADS-456");
-        au.setCatalogoMarcaLinea(new Dao.CatalogoMarcaLineaDAO().consultaCatalogo("Toyota", "Deportivo", "Supre"));
+        Long idC=new Dao.CatalogoMarcaLineaDAO().consultaCatalogo("Toyota", "Deportivo", "Supre");
+        au.setCatalogoMarcaLinea(new Dao.CatalogoMarcaLineaDAO().consultar(idC));
         au.setCliente(new Dao.ClienteDAO().consultar(Long.valueOf(1)));
         
         new Dao.AutomovilDAO().agregar(au);
+        //CatalogoMarcaLinea c=new Dao.CatalogoMarcaLineaDAO().consultaCatalogo("Toyota", "Deportivo", "Supre");
+        
         
     }
     public void AgregarCatalogoMarcasLineas(){
@@ -138,8 +143,15 @@ public class AgregarDatos {
         emplaca.setNombrePlaca("FASF-987");
         //validacion de lista de un solo id
         emplaca.setPlacasCosto(new Dao.PlacasCostosDAO().consultarTodas());
+        // Creo q debeira ser una lista de los automoviles de un cliente
+        //Automovil as=new Dao.AutomovilDAO()
+        // Lista de autos  llamando al autos dao.idCliente         
+        Cliente c= new Dao.ClienteDAO().consultar(Long.valueOf(1));
+        emplaca.setAutomovil(new Dao.AutomovilDAO().consultaClientesId(c)); 
+        new Dao.EmpacaDAO().agregar(emplaca);
         
-        
+        c.setVehiculo(new Dao.VehiculosDAO().consultaClientesId(c));
+        new Dao.ClienteDAO().actualizar(c.getId_Cliente(), c);
     }
     
 }

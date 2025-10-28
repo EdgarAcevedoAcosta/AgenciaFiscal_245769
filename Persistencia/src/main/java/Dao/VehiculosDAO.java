@@ -5,13 +5,17 @@
 package Dao;
 
 import entities.AdquiereLiciencia;
+import entities.Automovil;
+import entities.Cliente;
 import entities.Vehiculo;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -58,6 +62,24 @@ public class VehiculosDAO implements IVehiculosDAO {
         List<Vehiculo> redes=q.getResultList();
         em.getTransaction().commit();
         return redes;
+    }
+    
+    public List<Vehiculo> consultaClientesId(Cliente cliente){
+        EntityManager em = managerFactory.createEntityManager();
+        em.getTransaction().begin();
+        CriteriaBuilder cb=em.getCriteriaBuilder();
+        CriteriaQuery<Vehiculo> cq= cb.createQuery(Vehiculo.class);
+        Root<Vehiculo> root=cq.from(Vehiculo.class);
+        
+        cq.select(root).where(cb.equal(root.get("id_Cliente"), cliente)).orderBy(cb.asc(root.get("id_Cliente")));
+        List<Vehiculo> resultado=em.createQuery(cq).getResultList();
+        em.getTransaction().commit();
+        if(resultado==null){
+            System.out.println("No se encontro el Automovil");
+            return null;
+        }else{
+            return resultado;
+        } 
     }
     
 }
