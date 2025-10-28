@@ -5,13 +5,17 @@
 package Dao;
 
 import entities.AdquiereLiciencia;
+import entities.Automovil;
+import entities.Cliente;
 import entities.Empaca;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -46,6 +50,7 @@ EntityManager em = managerFactory.createEntityManager();
             adLic.setNombrePlaca(adLicNueva.getNombrePlaca());
             adLic.setAutomovil(adLicNueva.getAutomovil());
             adLic.setPlacasCosto(adLicNueva.getPlacasCosto());
+            
             em.persist(adLic);
             
             System.out.println("Se actualizo correctamente");
@@ -101,5 +106,25 @@ EntityManager em = managerFactory.createEntityManager();
         em.getTransaction().commit();
         return redes;
     }
+    
+    public List<Empaca> consultarAutomoviles(List<Automovil> automovil) {
+        EntityManager em = managerFactory.createEntityManager();
+        em.getTransaction().begin();
+        CriteriaBuilder cb=em.getCriteriaBuilder();
+        CriteriaQuery<Empaca> cq= cb.createQuery(Empaca.class);
+        Root<Empaca> root=cq.from(Empaca.class);
+        
+        cq.select(root).where(cb.equal(root.get("empaca"), automovil)).orderBy(cb.asc(root.get("empaca")));
+        List<Empaca> resultado=em.createQuery(cq).getResultList();
+        em.getTransaction().commit();
+        if(resultado==null){
+            System.out.println("No se encontro el el Auto Emplacado");
+            return null;
+        }else{
+            return resultado;
+        } 
+    }
+    
+    
     
 }

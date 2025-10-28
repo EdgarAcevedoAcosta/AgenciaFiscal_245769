@@ -34,7 +34,6 @@ public class FrmSeleccioneAccion extends javax.swing.JFrame {
         btnModuloLic1 = new javax.swing.JButton();
         btnSolicitud = new javax.swing.JButton();
         btnSolicitud1 = new javax.swing.JButton();
-        btnSolicitud3 = new javax.swing.JButton();
 
         btnSolicitud2.setBackground(new java.awt.Color(153, 255, 153));
         btnSolicitud2.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
@@ -84,16 +83,6 @@ public class FrmSeleccioneAccion extends javax.swing.JFrame {
             }
         });
 
-        btnSolicitud3.setBackground(new java.awt.Color(153, 255, 153));
-        btnSolicitud3.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        btnSolicitud3.setForeground(new java.awt.Color(0, 0, 0));
-        btnSolicitud3.setText("Consulta Historial");
-        btnSolicitud3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSolicitud3ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -107,7 +96,6 @@ public class FrmSeleccioneAccion extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(118, 118, 118)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnSolicitud3, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSolicitud1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -123,9 +111,7 @@ public class FrmSeleccioneAccion extends javax.swing.JFrame {
                 .addComponent(btnSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(btnSolicitud1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addComponent(btnSolicitud3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,7 +128,7 @@ public class FrmSeleccioneAccion extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
@@ -150,29 +136,26 @@ public class FrmSeleccioneAccion extends javax.swing.JFrame {
 
     private void btnModuloLic1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloLic1ActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnModuloLic1ActionPerformed
 
     private void btnSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitudActionPerformed
         // TODO add your handling code here:
         FrmConsultaGeneral frmL=new FrmConsultaGeneral("Licencia");
         frmL.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnSolicitudActionPerformed
 
     private void btnSolicitud1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitud1ActionPerformed
         // TODO add your handling code here:
         FrmConsultaGeneral frmL=new FrmConsultaGeneral("Placa");
         frmL.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnSolicitud1ActionPerformed
 
     private void btnSolicitud2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitud2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSolicitud2ActionPerformed
-
-    private void btnSolicitud3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitud3ActionPerformed
-        // TODO add your handling code here:
-        FrmConsultaGeneral frmL=new FrmConsultaGeneral("Todos");
-        frmL.setVisible(true);
-    }//GEN-LAST:event_btnSolicitud3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -180,7 +163,6 @@ public class FrmSeleccioneAccion extends javax.swing.JFrame {
     private javax.swing.JButton btnSolicitud;
     private javax.swing.JButton btnSolicitud1;
     private javax.swing.JButton btnSolicitud2;
-    private javax.swing.JButton btnSolicitud3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

@@ -5,6 +5,7 @@
 package Dao;
 
 import entities.AdquiereLiciencia;
+import entities.Automovil;
 import entities.Cliente;
 import java.sql.SQLException;
 import java.util.List;
@@ -81,21 +82,21 @@ public class AdquiereLicenciaDAO implements IAdquiereLicenciaDAO{
         return redes;
 
     }
-   /* public boolean consultaFechaVigencia(){
+    public List<AdquiereLiciencia> consultaClientesAd(List<Cliente> cliente){
         EntityManager em = managerFactory.createEntityManager();
         em.getTransaction().begin();
         CriteriaBuilder cb=em.getCriteriaBuilder();
         CriteriaQuery<AdquiereLiciencia> cq= cb.createQuery(AdquiereLiciencia.class);
         Root<AdquiereLiciencia> root=cq.from(AdquiereLiciencia.class);
         
-        cq
-        Cliente resultado=em.find(Cliente.class, cq);
+        cq.select(root).where(cb.equal(root.get("adquiereLicienciaCliente"), cliente)).orderBy(cb.asc(root.get("adquiereLicienciaCliente")));
+        List<AdquiereLiciencia> resultado=em.createQuery(cq).getResultList();
         em.getTransaction().commit();
         if(resultado==null){
-            System.out.println("No se encontro el cliente");
+            System.out.println("No se encontro el Automovil");
             return null;
         }else{
             return resultado;
         } 
-    }*/
+    }
 }

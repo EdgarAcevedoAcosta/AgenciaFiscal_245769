@@ -110,7 +110,7 @@ public class Convertidor {
     public DefaultTableModel EmplacaTableModel(List<Empaca> listaAutos) {
         Object tabla[][];
         if (listaAutos != null) {
-            tabla = new Object[listaAutos.size()][5];
+            tabla = new Object[listaAutos.size()][6];
           
             for (int i = 0; i < listaAutos.size(); i++) {
                 // Obten una medico de la lista de medicos
@@ -123,7 +123,7 @@ public class Convertidor {
                 tabla[i][2] = catalogo.getFechaEmision();
                 tabla[i][3] = catalogo.getFechaRecepcion();
                 tabla[i][4] = catalogo.getEstado();
-                tabla[i][4] = catalogo.getCostoTotal();
+                tabla[i][5] = catalogo.getCostoTotal();
 
             }
             return new DefaultTableModel(tabla, nombresColumnaTablaEmplaca);

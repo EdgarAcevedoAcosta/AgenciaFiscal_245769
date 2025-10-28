@@ -4,7 +4,17 @@
  */
 package presentacionConsultas;
 
+import componentes.Convertidor;
+import componentes.Tabla;
+import entities.AdquiereLiciencia;
+import entities.Automovil;
 import entities.Cliente;
+import entities.Empaca;
+import entities.Vehiculo;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,6 +23,9 @@ import entities.Cliente;
 public class FrmCostosPlacas extends javax.swing.JFrame {
     private Cliente cliente;
     private String tipoDeConsulta;
+    private Convertidor convertir;
+    private Empaca emplaca;
+    private AdquiereLiciencia adq;
     /**
      * Creates new form FrmCostosPlacas
      */
@@ -20,8 +33,59 @@ public class FrmCostosPlacas extends javax.swing.JFrame {
         this.cliente=cliente;
         this.tipoDeConsulta=tipoDeConsulta;
         initComponents();
+        if(tipoDeConsulta=="Licencia"){
+            jLabel1.setText("Consulta de Licencias");
+            tablaClientesAquisicionLiciencia();
+        }else{
+            jLabel1.setText("Consulta de Placas Compradas");
+            tablaClientesEmplaca();
+        }
+    }
+    
+    public void tablaClientesEmplaca(){
+        //Vehiculo veh=new Automovil();
+        //emplaca=cliente
+        List<Cliente> lsita=new ArrayList<Cliente>();
+        lsita.add(cliente);
+        List<Automovil> listaA=new Dao.AutomovilDAO().consultaClientesAd(lsita);
+        List<Empaca> listaE=new Dao.EmpacaDAO().consultarAutomoviles(listaA);
+        if(listaE == null || listaE.isEmpty()){
+                JOptionPane.showMessageDialog(this, "No hay Placas Compradas.","Informacion", JOptionPane.ERROR_MESSAGE);
+         }
+        DefaultTableModel modelo =convertir.EmplacaTableModel(listaE);
+        Tabla TablaClientes=new Tabla("Lista de Cliente que Tienen una Placa Comprada", modelo );
+        despliegaTabla(TablaClientes);
+    }
+    public void tablaClientesAquisicionLiciencia(){
+        adq= cliente.getAdquiereLicienciaCliente();
+        List<Cliente> lsita=new ArrayList<Cliente>();
+        lsita.add(cliente);
+        
+        List<AdquiereLiciencia> listaAdL= new Dao.AdquiereLicenciaDAO().consultaClientesAd(lsita);
+        if(listaAdL == null || listaAdL.isEmpty()){
+                JOptionPane.showMessageDialog(this, "No hay Clientes registrados.","Informacion", JOptionPane.ERROR_MESSAGE);
+         }
+        DefaultTableModel modelo =convertir.AquiereLicenTableModel(listaAdL);
+        Tabla TablaClientes=new Tabla("Lista de Cliente que tienen Licencia", modelo );
+        despliegaTabla(TablaClientes);
+        
     }
 
+    public void despliegaTabla(Tabla a) {
+        // Crea la tabla a partir del modelo de la tabla con los valores 
+        // de los titulos de las columnas y los valores de las celdas 
+        jtabla = new javax.swing.JTable(a.getModeloTabla());
+        // Establece el título de la tabla 
+
+        
+        // Hace que el control del tamaño de la tabla y la porción visible 
+        // lo tenga la barra de deslizamiento y no la tabla 
+        jtabla.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jtabla.setAutoscrolls(false);
+        // Hace visible la tabla dentro del panel con barras de 
+        // deslizamiento 
+        jScrollPane1.setViewportView(jtabla);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,7 +131,7 @@ public class FrmCostosPlacas extends javax.swing.JFrame {
                         .addGap(39, 39, 39)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(249, 249, 249)
+                        .addGap(222, 222, 222)
                         .addComponent(jLabel1)))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
@@ -115,4 +179,5 @@ public class FrmCostosPlacas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+private javax.swing.JTable jtabla;
 }

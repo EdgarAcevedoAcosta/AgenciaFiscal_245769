@@ -4,18 +4,60 @@
  */
 package presentacionConsultas;
 
+import componentes.Convertidor;
+import componentes.Tabla;
+import entities.Cliente;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author edgar
  */
 public class FrmConsultaGeneral extends javax.swing.JFrame {
     private String tipoDeConsulta;
+    private Convertidor convertir;
     /**
      * Creates new form FrmConsultaGeneral
      */
     public FrmConsultaGeneral(String tipoDeConsulta) {
         this.tipoDeConsulta=tipoDeConsulta;
+        convertir=new Convertidor();
+        JOptionPane.showMessageDialog(this, "Aviso!!", "En esta pantalla van a salir todos los clientes, la tabla es para todos, y el fireado es "
+                + "para ver una persona pero tambien sirve para consultarla", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Aviso!!", "No necesitas tener los dos campos llenos", JOptionPane.INFORMATION_MESSAGE);
         initComponents();
+        despliegaTabla( new Tabla());
+        tablaClientes();
+        
+    }
+    public void despliegaTabla(Tabla a) {
+        // Crea la tabla a partir del modelo de la tabla con los valores 
+        // de los titulos de las columnas y los valores de las celdas 
+        jtabla = new javax.swing.JTable(a.getModeloTabla());
+        // Establece el título de la tabla 
+
+        
+        // Hace que el control del tamaño de la tabla y la porción visible 
+        // lo tenga la barra de deslizamiento y no la tabla 
+        jtabla.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jtabla.setAutoscrolls(false);
+        // Hace visible la tabla dentro del panel con barras de 
+        // deslizamiento 
+        jScrollPane1.setViewportView(jtabla);
+    }
+    public void tablaClientes(){
+        List<Cliente> listaCl= new Dao.ClienteDAO().consultarTodos();
+        if(listaCl == null || listaCl.isEmpty()){
+                JOptionPane.showMessageDialog(this, "No hay Clientes registrados.","Informacion", JOptionPane.ERROR_MESSAGE);
+         }
+        DefaultTableModel modelo =convertir.ClienteTableModel(listaCl);
+        Tabla TablaClientes=new Tabla("Lista de Clientes", modelo );
+        despliegaTabla(TablaClientes);
     }
 
     /**
@@ -104,34 +146,35 @@ public class FrmConsultaGeneral extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(jLabel2)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnFiltrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(jLabel3))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(91, 91, 91)
+                                .addComponent(jLabel2)))
+                        .addGap(44, 44, 44)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                            .addComponent(txtRFC)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(btnModuloLic1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
+                        .addGap(53, 53, 53)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnFiltrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,21 +189,18 @@ public class FrmConsultaGeneral extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jLabel2))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(txtRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(74, 74, 74)
+                        .addComponent(txtRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnFiltrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -177,7 +217,7 @@ public class FrmConsultaGeneral extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -190,12 +230,60 @@ public class FrmConsultaGeneral extends javax.swing.JFrame {
 
     private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
         // TODO add your handling code here:
+        Cliente cliente = null;
+        if(txtNombre.getText() != null){
+            if(txtRFC.getText() != null){
+                String regex = "^[A-Z&Ñ]{3,4}[0-9]{6}[A-Z0-9]{3}$";
+                Pattern pattern = Pattern.compile(regex);
+                Matcher matcher = pattern.matcher(txtRFC.getText().toUpperCase());
+                if(matcher.matches()){
+                    cliente=new Dao.ClienteDAO().consultaRFC(txtRFC.getText());
+                }else{
+                    JOptionPane.showMessageDialog(this, "Advertencia!!", "La el RFC no es Valido", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }else{
+                cliente=new Dao.ClienteDAO().consultaNombre(txtNombre.getText());
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Advertencia!!", "El Nombre Completo o El RFC esta Vacio", JOptionPane.INFORMATION_MESSAGE);
+        }
+        List<Cliente> lista=new ArrayList<Cliente>();
+        lista.add(cliente);
+        DefaultTableModel modelo =convertir.ClienteTableModel(lista);
+        Tabla TablaClientes=new Tabla("Lista de Clientes", modelo );
+        despliegaTabla(TablaClientes);
     }//GEN-LAST:event_btnFiltrarActionPerformed
 
     private void btnFiltrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrar1ActionPerformed
         // TODO add your handling code here:
         //FrmCostosPlacas frm=new FrmCostosPlacas(cliente, tipoDeConsulta);
         //frm.setVisible(true);
+        Cliente cliente = null;
+        if(txtNombre.getText() != null){
+            if(txtRFC.getText() != null){
+                String regex = "^[A-Z&Ñ]{3,4}[0-9]{6}[A-Z0-9]{3}$";
+                Pattern pattern = Pattern.compile(regex);
+                Matcher matcher = pattern.matcher(txtRFC.getText().toUpperCase());
+                if(matcher.matches()){
+                    cliente=new Dao.ClienteDAO().consultaRFC(txtRFC.getText());
+                    
+                }else{
+                    JOptionPane.showMessageDialog(this, "Advertencia!!", "La el RFC no es Valido", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }else{
+                cliente=new Dao.ClienteDAO().consultaNombre(txtNombre.getText());
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Advertencia!!", "El Nombre Completo o El RFC esta Vacio", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if(cliente != null){
+            FrmCostosPlacas frm=new FrmCostosPlacas(cliente, tipoDeConsulta);
+            frm.setVisible(true);
+            dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Advertencia!!", "El Cliente no Existe o No hay Clientes", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
     }//GEN-LAST:event_btnFiltrar1ActionPerformed
 
 
@@ -212,4 +300,5 @@ public class FrmConsultaGeneral extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtRFC;
     // End of variables declaration//GEN-END:variables
+private javax.swing.JTable jtabla;
 }
