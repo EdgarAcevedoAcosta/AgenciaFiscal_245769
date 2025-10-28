@@ -125,6 +125,24 @@ EntityManager em = managerFactory.createEntityManager();
         } 
     }
     
+    public Empaca consultaNombre(String nombre){
+        EntityManager em = managerFactory.createEntityManager();
+        em.getTransaction().begin();
+        CriteriaBuilder cb=em.getCriteriaBuilder();
+        CriteriaQuery<Empaca> cq= cb.createQuery(Empaca.class);
+        Root<Empaca> root=cq.from(Empaca.class);
+        
+        cq.select(root).where(cb.equal(root.get("nombrePlaca"), nombre)).orderBy(cb.asc(root.get("nombrePlaca")));
+        Empaca resultado=em.createQuery(cq).getSingleResult();
+        em.getTransaction().commit();
+        if(resultado==null){
+            System.out.println("No se encontro el la placa");
+            return null;
+        }else{
+            return resultado;
+        } 
+    }
+    
     
     
 }

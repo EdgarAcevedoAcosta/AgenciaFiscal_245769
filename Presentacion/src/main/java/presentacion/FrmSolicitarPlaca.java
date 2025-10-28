@@ -43,7 +43,7 @@ public class FrmSolicitarPlaca extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Solicitud de Placas");
 
-        btnModuloLic1.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Red"));
+        btnModuloLic1.setBackground(new java.awt.Color(203, 77, 77));
         btnModuloLic1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnModuloLic1.setForeground(new java.awt.Color(255, 255, 255));
         btnModuloLic1.setText("Cancelar");
@@ -53,7 +53,7 @@ public class FrmSolicitarPlaca extends javax.swing.JFrame {
             }
         });
 
-        btnAutoNuevo.setBackground(new java.awt.Color(153, 255, 153));
+        btnAutoNuevo.setBackground(new java.awt.Color(103, 227, 103));
         btnAutoNuevo.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnAutoNuevo.setForeground(new java.awt.Color(0, 0, 0));
         btnAutoNuevo.setText("Auto Nuevo");
@@ -63,7 +63,7 @@ public class FrmSolicitarPlaca extends javax.swing.JFrame {
             }
         });
 
-        btnAutoUsado.setBackground(new java.awt.Color(153, 255, 153));
+        btnAutoUsado.setBackground(new java.awt.Color(103, 227, 103));
         btnAutoUsado.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnAutoUsado.setForeground(new java.awt.Color(0, 0, 0));
         btnAutoUsado.setText("Auto Usado");
@@ -73,7 +73,7 @@ public class FrmSolicitarPlaca extends javax.swing.JFrame {
             }
         });
 
-        btnCostosPlacas.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
+        btnCostosPlacas.setBackground(new java.awt.Color(51, 143, 193));
         btnCostosPlacas.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnCostosPlacas.setForeground(new java.awt.Color(255, 255, 255));
         btnCostosPlacas.setText("Ver Costos de Placas");

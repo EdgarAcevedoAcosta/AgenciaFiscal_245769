@@ -137,7 +137,7 @@
         <Component class="javax.swing.JButton" name="btnModuloLic1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="50" green="54" id="Actions.Red" palette="3" red="c7" type="palette"/>
+              <Color blue="4d" green="4d" red="cb" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI Black" size="14" style="0"/>
@@ -225,7 +225,7 @@
         <Component class="javax.swing.JButton" name="btnConfirmar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="54" green="9c" id="Actions.Green" palette="3" red="49" type="palette"/>
+              <Color blue="51" green="9c" red="45" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI Black" size="18" style="0"/>

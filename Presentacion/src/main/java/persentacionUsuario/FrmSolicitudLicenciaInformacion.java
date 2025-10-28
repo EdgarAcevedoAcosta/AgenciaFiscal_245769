@@ -55,7 +55,7 @@ public class FrmSolicitudLicenciaInformacion extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Solicitud de Licencia Información");
 
-        btnModuloLic1.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Red"));
+        btnModuloLic1.setBackground(new java.awt.Color(203, 77, 77));
         btnModuloLic1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnModuloLic1.setForeground(new java.awt.Color(255, 255, 255));
         btnModuloLic1.setText("Cancelar");
@@ -65,7 +65,7 @@ public class FrmSolicitudLicenciaInformacion extends javax.swing.JFrame {
             }
         });
 
-        btnCostosLicencias.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
+        btnCostosLicencias.setBackground(new java.awt.Color(51, 143, 193));
         btnCostosLicencias.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnCostosLicencias.setForeground(new java.awt.Color(255, 255, 255));
         btnCostosLicencias.setText("No Estoy Registrado");
@@ -76,7 +76,7 @@ public class FrmSolicitudLicenciaInformacion extends javax.swing.JFrame {
             }
         });
 
-        btnConfirmar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Green"));
+        btnConfirmar.setBackground(new java.awt.Color(69, 156, 81));
         btnConfirmar.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnConfirmar.setForeground(new java.awt.Color(255, 255, 255));
         btnConfirmar.setText("Confirmar");

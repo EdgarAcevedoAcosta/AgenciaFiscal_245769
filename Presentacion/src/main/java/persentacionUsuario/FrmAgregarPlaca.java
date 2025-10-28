@@ -35,6 +35,10 @@ public class FrmAgregarPlaca extends javax.swing.JFrame {
             idTramite=Long.valueOf(1);
         }else{
             idTramite=Long.valueOf(2);
+            txtNumSerie1.setEditable(false);
+            txtPlaca1.setEditable(false);
+            txtPlaca2.setEditable(false);
+            txtPlaca3.setEditable(false);
         }
         initComponents();
     }
@@ -75,7 +79,7 @@ public class FrmAgregarPlaca extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Agregar Placa");
 
-        btnModuloLic1.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Red"));
+        btnModuloLic1.setBackground(new java.awt.Color(203, 77, 77));
         btnModuloLic1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnModuloLic1.setForeground(new java.awt.Color(255, 255, 255));
         btnModuloLic1.setText("Cancelar");
@@ -85,7 +89,7 @@ public class FrmAgregarPlaca extends javax.swing.JFrame {
             }
         });
 
-        btnConfirmar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Green"));
+        btnConfirmar.setBackground(new java.awt.Color(69, 156, 81));
         btnConfirmar.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnConfirmar.setForeground(new java.awt.Color(255, 255, 255));
         btnConfirmar.setText("Confirmar");

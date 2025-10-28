@@ -60,7 +60,7 @@ public class FrmAgregarUsuario extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnModuloLic1.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Red"));
+        btnModuloLic1.setBackground(new java.awt.Color(203, 77, 77));
         btnModuloLic1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnModuloLic1.setForeground(new java.awt.Color(255, 255, 255));
         btnModuloLic1.setText("Cancelar");
@@ -110,7 +110,7 @@ public class FrmAgregarUsuario extends javax.swing.JFrame {
         txtTelefono.setText("jTextField1");
         txtTelefono.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btnConfirmar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Green"));
+        btnConfirmar.setBackground(new java.awt.Color(69, 156, 81));
         btnConfirmar.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnConfirmar.setForeground(new java.awt.Color(255, 255, 255));
         btnConfirmar.setText("Confirmar");

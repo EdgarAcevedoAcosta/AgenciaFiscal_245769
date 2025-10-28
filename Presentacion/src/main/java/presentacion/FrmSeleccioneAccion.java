@@ -53,7 +53,7 @@ public class FrmSeleccioneAccion extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Que Quiere Consultar");
 
-        btnModuloLic1.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Red"));
+        btnModuloLic1.setBackground(new java.awt.Color(203, 77, 77));
         btnModuloLic1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnModuloLic1.setForeground(new java.awt.Color(255, 255, 255));
         btnModuloLic1.setText("Cancelar");
@@ -63,7 +63,7 @@ public class FrmSeleccioneAccion extends javax.swing.JFrame {
             }
         });
 
-        btnSolicitud.setBackground(new java.awt.Color(153, 255, 153));
+        btnSolicitud.setBackground(new java.awt.Color(103, 227, 103));
         btnSolicitud.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnSolicitud.setForeground(new java.awt.Color(0, 0, 0));
         btnSolicitud.setText("Consulta de Licencia");
@@ -73,7 +73,7 @@ public class FrmSeleccioneAccion extends javax.swing.JFrame {
             }
         });
 
-        btnSolicitud1.setBackground(new java.awt.Color(153, 255, 153));
+        btnSolicitud1.setBackground(new java.awt.Color(103, 227, 103));
         btnSolicitud1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnSolicitud1.setForeground(new java.awt.Color(0, 0, 0));
         btnSolicitud1.setText("Consulta de Placas");

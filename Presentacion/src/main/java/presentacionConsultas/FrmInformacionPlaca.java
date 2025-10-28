@@ -6,6 +6,9 @@ package presentacionConsultas;
 
 import entities.Automovil;
 import entities.CatalogoMarcaLinea;
+import entities.Empaca;
+import entities.PlacasCosto;
+import java.util.List;
 
 /**
  *
@@ -19,6 +22,19 @@ public class FrmInformacionPlaca extends javax.swing.JFrame {
     public FrmInformacionPlaca(String placa) {
         this.placa=placa;
         initComponents();
+        Empaca au= new Dao.EmpacaDAO().consultaNombre(placa);
+        //List<Automovil> lista=au.getAutomovil();
+        Automovil car=new Dao.AutomovilDAO().consultaEmplalca(au);
+        CatalogoMarcaLinea cat= car.getCatalogoMarcaLinea();
+        //PlacasCosto cl=
+        
+        jLabel4.setText(au.getEstado());
+        jLabel6.setText(cat.getMarca());
+        jLabel8.setText(car.getNumeroSerie());
+        jLabel10.setText(cat.getLinea());
+        jLabel12.setText(car.getColor());
+        jLabel14.setText(cat.getModelo());
+        //jLabel6.setText(au.getPlacasCosto);
     }
 
     /**
@@ -45,8 +61,6 @@ public class FrmInformacionPlaca extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,7 +102,7 @@ public class FrmInformacionPlaca extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Civic");
 
-        btnBuscar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.GreyInline"));
+        btnBuscar.setBackground(new java.awt.Color(128, 140, 146));
         btnBuscar.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setText("Cerrar");
@@ -114,14 +128,6 @@ public class FrmInformacionPlaca extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("2003");
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel15.setText("Tipo de Tramite:");
-
-        jLabel16.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel16.setText("Placas de Auto Nuevo");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -142,10 +148,7 @@ public class FrmInformacionPlaca extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel15))))
+                                    .addComponent(jLabel4)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -162,16 +165,13 @@ public class FrmInformacionPlaca extends javax.swing.JFrame {
                                             .addComponent(jLabel14)))
                                     .addComponent(jLabel7))
                                 .addGap(42, 42, 42)
-                                .addComponent(jLabel8))))
+                                .addComponent(jLabel8)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(98, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addGap(39, 39, 39)))
                 .addGap(56, 56, 56))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel16)
-                .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,11 +181,8 @@ public class FrmInformacionPlaca extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel4))
+                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
@@ -245,8 +242,6 @@ public class FrmInformacionPlaca extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

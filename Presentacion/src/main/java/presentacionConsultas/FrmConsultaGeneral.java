@@ -84,7 +84,7 @@ public class FrmConsultaGeneral extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnModuloLic1.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Red"));
+        btnModuloLic1.setBackground(new java.awt.Color(203, 77, 77));
         btnModuloLic1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnModuloLic1.setForeground(new java.awt.Color(255, 255, 255));
         btnModuloLic1.setText("Cancelar");
@@ -119,7 +119,7 @@ public class FrmConsultaGeneral extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(51, 51, 51));
         jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
 
-        btnFiltrar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
+        btnFiltrar.setBackground(new java.awt.Color(51, 143, 193));
         btnFiltrar.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnFiltrar.setForeground(new java.awt.Color(255, 255, 255));
         btnFiltrar.setText("Filtrar");
@@ -129,7 +129,7 @@ public class FrmConsultaGeneral extends javax.swing.JFrame {
             }
         });
 
-        btnFiltrar1.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Green"));
+        btnFiltrar1.setBackground(new java.awt.Color(69, 156, 81));
         btnFiltrar1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnFiltrar1.setForeground(new java.awt.Color(255, 255, 255));
         btnFiltrar1.setText("Consultar");

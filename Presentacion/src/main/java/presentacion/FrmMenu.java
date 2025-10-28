@@ -52,7 +52,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Tramites que se Pueden Hacer");
 
-        btnModuloLic.setBackground(new java.awt.Color(153, 255, 153));
+        btnModuloLic.setBackground(new java.awt.Color(103, 227, 103));
         btnModuloLic.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnModuloLic.setForeground(new java.awt.Color(0, 0, 0));
         btnModuloLic.setText("Módulo de Licencias");
@@ -62,7 +62,7 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
 
-        btnModuloPlac.setBackground(new java.awt.Color(153, 255, 153));
+        btnModuloPlac.setBackground(new java.awt.Color(103, 227, 103));
         btnModuloPlac.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnModuloPlac.setForeground(new java.awt.Color(0, 0, 0));
         btnModuloPlac.setText("Módulo de Placas");
@@ -72,7 +72,7 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
 
-        btnModuloCons.setBackground(new java.awt.Color(153, 255, 153));
+        btnModuloCons.setBackground(new java.awt.Color(103, 227, 103));
         btnModuloCons.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnModuloCons.setForeground(new java.awt.Color(0, 0, 0));
         btnModuloCons.setText("Módulo de Consultas");
@@ -82,7 +82,7 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
 
-        btnModuloRepor.setBackground(new java.awt.Color(153, 255, 153));
+        btnModuloRepor.setBackground(new java.awt.Color(103, 227, 103));
         btnModuloRepor.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnModuloRepor.setForeground(new java.awt.Color(0, 0, 0));
         btnModuloRepor.setText("Módulo de Reportes");

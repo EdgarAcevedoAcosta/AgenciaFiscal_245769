@@ -41,7 +41,7 @@ public class FrmCosultaUsuario extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Consulta");
 
-        btnModuloLic1.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.GreyInline"));
+        btnModuloLic1.setBackground(new java.awt.Color(128, 140, 146));
         btnModuloLic1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnModuloLic1.setForeground(new java.awt.Color(255, 255, 255));
         btnModuloLic1.setText("Cerrar");
@@ -59,7 +59,7 @@ public class FrmCosultaUsuario extends javax.swing.JFrame {
         btnFiltrar.setForeground(new java.awt.Color(255, 255, 255));
         btnFiltrar.setText("Filtrar");
 
-        btnModuloLic2.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
+        btnModuloLic2.setBackground(new java.awt.Color(51, 143, 193));
         btnModuloLic2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnModuloLic2.setForeground(new java.awt.Color(255, 255, 255));
         btnModuloLic2.setText("Generar PDF");

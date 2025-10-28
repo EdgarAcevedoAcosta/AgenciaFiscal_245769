@@ -119,7 +119,7 @@
         <Component class="javax.swing.JButton" name="btnModuloLic1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="91" green="8b" id="Actions.GreyInline" palette="3" red="7f" type="palette"/>
+              <Color blue="92" green="8c" red="80" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI Black" size="14" style="0"/>
@@ -162,7 +162,7 @@
         <Component class="javax.swing.JButton" name="btnModuloLic2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="c4" green="92" id="Actions.Blue" palette="3" red="35" type="palette"/>
+              <Color blue="c1" green="8f" red="33" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI Black" size="14" style="0"/>
