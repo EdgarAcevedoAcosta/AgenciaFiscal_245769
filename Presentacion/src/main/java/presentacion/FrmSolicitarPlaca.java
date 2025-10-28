@@ -150,11 +150,15 @@ public class FrmSolicitarPlaca extends javax.swing.JFrame {
     private void btnAutoNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutoNuevoActionPerformed
         // TODO add your handling code here:
         FrmAgregarPlaca frmAg=new FrmAgregarPlaca("Automovil Nuevo");
+        frmAg.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnAutoNuevoActionPerformed
 
     private void btnAutoUsadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutoUsadoActionPerformed
         // TODO add your handling code here:
         FrmAgregarPlaca frmAg=new FrmAgregarPlaca("Automovil Usado");
+        frmAg.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnAutoUsadoActionPerformed
 
     private void btnCostosPlacasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCostosPlacasActionPerformed

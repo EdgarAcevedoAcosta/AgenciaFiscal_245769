@@ -4,18 +4,38 @@
  */
 package persentacionUsuario;
 
+import entities.Automovil;
+import entities.CatalogoMarcaLinea;
+import entities.Cliente;
+import entities.Empaca;
+import entities.PlacasCosto;
+import java.time.LocalDate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author edgar
  */
 public class FrmAgregarPlaca extends javax.swing.JFrame {
     private String tipoTramite;
+    private Empaca emplaca;
+    private Cliente cliente;
+    private Long idTramite;
+    //private CatalogoMarcaLinea catalogoMarcaLinea;
+    
     
     /**
      * Creates new form FrmAgregarPlaca
      */
     public FrmAgregarPlaca(String tipoTramite) {
         this.tipoTramite=tipoTramite;
+        if(tipoTramite=="Automovil Nuevo"){
+            idTramite=Long.valueOf(1);
+        }else{
+            idTramite=Long.valueOf(2);
+        }
         initComponents();
     }
 
@@ -250,6 +270,124 @@ public class FrmAgregarPlaca extends javax.swing.JFrame {
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
         //validaciones 
+        if(tipoTramite=="Automovil Nuevo"){
+            if (txtNumSerie2.getText() == null || txtNumSerie2.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Advertencia!!", "El RFC Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (txtPlaca.getText() == null || txtPlaca.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Advertencia!!", "El Nombre de la Placa Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (txtNumSerie.getText() == null || txtNumSerie.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Advertencia!!", "La Numero de Serie Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (txtNumSerie1.getText() == null || txtNumSerie1.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Advertencia!!", "El Nombre de la Placa Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (txtPlaca1.getText() == null || txtPlaca1.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Advertencia!!", "La Numero de Serie Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (txtPlaca2.getText() == null || txtPlaca2.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Advertencia!!", "El Nombre de la Placa Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (txtPlaca3.getText() == null || txtPlaca3.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Advertencia!!", "La Numero de Serie Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
+            }
+            if(txtNumSerie2.getText() != null && txtPlaca.getText() != null && txtNumSerie.getText() != null 
+                   && txtNumSerie1.getText() != null && txtPlaca1.getText() != null
+                    && txtPlaca2.getText() != null && txtPlaca3.getText() != null){
+                
+                String regex = "^[A-Z&Ñ]{3,4}[0-9]{6}[A-Z0-9]{3}$";
+                Pattern pattern = Pattern.compile(regex);
+                Matcher matcher = pattern.matcher(txtNumSerie2.getText().toUpperCase());
+                if(matcher.matches()){
+                    cliente= new Dao.ClienteDAO().consultaRFC(txtNumSerie2.getText());
+                    CatalogoMarcaLinea catalogoMarcaLinea =new CatalogoMarcaLinea();
+                    catalogoMarcaLinea= new Dao.CatalogoMarcaLineaDAO().
+                            consultaCatalogo(txtPlaca1.getText(), txtPlaca2.getText(), txtPlaca3.getText());
+                    Automovil auto=new Automovil();
+                    auto.setCliente(cliente);
+                    auto.setColor(txtNumSerie1.getText());
+                    auto.setNumeroSerie(txtNumSerie.getText());
+                    auto.setCatalogoMarcaLinea(catalogoMarcaLinea);
+                    PlacasCosto costo=new PlacasCosto();
+                    costo= new Dao.PlacasCostosDAO().consultar(idTramite);
+                    auto.setCatalogoMarcaLinea(catalogoMarcaLinea);
+                    //auto= new Dao.AutomovilDAO()
+                    emplaca.setEstado("Activo");
+                    emplaca.setNombrePlaca(txtPlaca.getText());
+                    emplaca.setPlacasCosto(new Dao.PlacasCostosDAO().consultarTodas());
+                    emplaca.setAutomovil(new Dao.AutomovilDAO().consultarTodas());
+                    emplaca.setCostoTotal(new Dao.PlacasCostosDAO().consultar(idTramite).getCosto());
+                    emplaca.setFechaEmision(LocalDate.now());
+                    emplaca.setFechaRecepcion(LocalDate.now());
+                    if(new Dao.AutomovilDAO().consultaNumeroSerie(txtNumSerie.getText()) == null){
+                        new Dao.AutomovilDAO().agregar(auto);
+                        new Dao.EmpacaDAO().agregar(emplaca);
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Advertencia!!", "El Automovil ya Existe", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    
+                }
+            }
+        }else{
+            if (txtNumSerie2.getText() == null || txtNumSerie2.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Advertencia!!", "El RFC Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (txtPlaca.getText() == null || txtPlaca.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Advertencia!!", "El Nombre de la Placa Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (txtNumSerie.getText() == null || txtNumSerie.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Advertencia!!", "La Numero de Serie Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (txtNumSerie1.getText() == null || txtNumSerie1.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Advertencia!!", "El Nombre de la Placa Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (txtPlaca1.getText() == null || txtPlaca1.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Advertencia!!", "La Numero de Serie Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (txtPlaca2.getText() == null || txtPlaca2.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Advertencia!!", "El Nombre de la Placa Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (txtPlaca3.getText() == null || txtPlaca3.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Advertencia!!", "La Numero de Serie Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
+            }
+            if(txtNumSerie2.getText() != null && txtPlaca.getText() != null && txtNumSerie.getText() != null 
+                   && txtNumSerie1.getText() != null && txtPlaca1.getText() != null
+                    && txtPlaca2.getText() != null && txtPlaca3.getText() != null){
+                
+                String regex = "^[A-Z&Ñ]{3,4}[0-9]{6}[A-Z0-9]{3}$";
+                Pattern pattern = Pattern.compile(regex);
+                Matcher matcher = pattern.matcher(txtNumSerie2.getText().toUpperCase());
+                if(matcher.matches()){
+                    cliente= new Dao.ClienteDAO().consultaRFC(txtNumSerie2.getText());
+                    CatalogoMarcaLinea catalogoMarcaLinea =new CatalogoMarcaLinea();
+                    catalogoMarcaLinea= new Dao.CatalogoMarcaLineaDAO().
+                            consultaCatalogo(txtPlaca1.getText(), txtPlaca2.getText(), txtPlaca3.getText());
+                    Automovil auto=new Automovil();
+                    auto= new Dao.AutomovilDAO().consultaNumeroSerie(txtNumSerie.getText());
+                    PlacasCosto costo=new PlacasCosto();
+                    costo= new Dao.PlacasCostosDAO().consultar(idTramite);
+                    auto.setCatalogoMarcaLinea(catalogoMarcaLinea);
+                    //auto= new Dao.AutomovilDAO()
+                    emplaca.setEstado("Activo");
+                    emplaca.setNombrePlaca(txtPlaca.getText());
+                    emplaca.setPlacasCosto(new Dao.PlacasCostosDAO().consultarTodas());
+                    emplaca.setAutomovil(new Dao.AutomovilDAO().consultarTodas());
+                    emplaca.setCostoTotal(new Dao.PlacasCostosDAO().consultar(idTramite).getCosto());
+                    emplaca.setFechaEmision(LocalDate.now());
+                    emplaca.setFechaRecepcion(LocalDate.now());
+                    if(new Dao.AutomovilDAO().consultaNumeroSerie(txtNumSerie.getText()) != null){
+                        JOptionPane.showMessageDialog(this, "Advertencia!!", "El Automovil ya Existe", JOptionPane.INFORMATION_MESSAGE);
+                        
+                    }else{
+                        new Dao.EmpacaDAO().agregar(emplaca);
+                    }
+                    
+                }
+            }
+            
+        }
+        
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
    

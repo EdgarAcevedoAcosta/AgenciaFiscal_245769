@@ -168,6 +168,7 @@ public class FrmSolicitudLicencia extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion(1);
+        frmSol.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnHacerUnAnhoActionPerformed
 
@@ -179,12 +180,14 @@ public class FrmSolicitudLicencia extends javax.swing.JFrame {
     private void btnHacerDosAnhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHacerDosAnhoActionPerformed
         // TODO add your handling code here:
         FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion(2);
+        frmSol.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnHacerDosAnhoActionPerformed
 
     private void btnHacerTresAnho1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHacerTresAnho1ActionPerformed
         // TODO add your handling code here:
         FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion(3);
+        frmSol.setVisible(true); 
         dispose();
     }//GEN-LAST:event_btnHacerTresAnho1ActionPerformed
 

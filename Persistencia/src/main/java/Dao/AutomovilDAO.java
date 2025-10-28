@@ -6,12 +6,15 @@ package Dao;
 
 import entities.AdquiereLiciencia;
 import entities.Automovil;
+import entities.Cliente;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -60,4 +63,21 @@ public class AutomovilDAO implements IAutomovilDAO{
         return redes;
     }
     
+    public Automovil consultaNumeroSerie(String numeroSerie){
+        EntityManager em = managerFactory.createEntityManager();
+        em.getTransaction().begin();
+        CriteriaBuilder cb=em.getCriteriaBuilder();
+        CriteriaQuery<Automovil> cq= cb.createQuery(Automovil.class);
+        Root<Automovil> root=cq.from(Automovil.class);
+        
+        cq.select(root).where(cb.equal(root.get("numeroSerie"), numeroSerie)).orderBy(cb.asc(root.get("numeroSerie")));
+        Automovil resultado=em.createQuery(cq).getSingleResult();
+        em.getTransaction().commit();
+        if(resultado==null){
+            System.out.println("No se encontro el cliente");
+            return null;
+        }else{
+            return resultado;
+        } 
+    }
 }

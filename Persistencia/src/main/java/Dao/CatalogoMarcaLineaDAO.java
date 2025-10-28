@@ -5,13 +5,16 @@
 package Dao;
 
 import entities.AdquiereLiciencia;
+import entities.Automovil;
 import entities.CatalogoMarcaLinea;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -59,6 +62,25 @@ public class CatalogoMarcaLineaDAO implements ICatalogoMarcaLineaDAO {
         em.getTransaction().commit();
         return redes;
 
+    }
+    
+    public CatalogoMarcaLinea consultaCatalogo(String marca, String linea, String modelo){
+        EntityManager em = managerFactory.createEntityManager();
+        em.getTransaction().begin();
+        CriteriaBuilder cb=em.getCriteriaBuilder();
+        CriteriaQuery<CatalogoMarcaLinea> cq= cb.createQuery(CatalogoMarcaLinea.class);
+        Root<CatalogoMarcaLinea> root=cq.from(CatalogoMarcaLinea.class);
+        
+        cq.select(root).where(cb.equal(root.get("marca"), marca)).where(cb.equal
+        (root.get("linea"), linea)).where(cb.equal(root.get("modelo"), modelo));
+        CatalogoMarcaLinea resultado=em.createQuery(cq).getSingleResult();
+        em.getTransaction().commit();
+        if(resultado==null){
+            System.out.println("No se encontro el cliente");
+            return null;
+        }else{
+            return resultado;
+        } 
     }
     
 }

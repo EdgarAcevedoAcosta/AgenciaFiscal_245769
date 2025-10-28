@@ -91,7 +91,7 @@ public class ClienteDAO implements IClienteDAO {
         Root<Cliente> root=cq.from(Cliente.class);
         
         cq.select(root).where(cb.equal(root.get("rfc"), RFC)).orderBy(cb.asc(root.get("rfc")));
-        Cliente resultado=em.find(Cliente.class, cq);
+        Cliente resultado=em.createQuery(cq).getSingleResult();
         em.getTransaction().commit();
         if(resultado==null){
             System.out.println("No se encontro el cliente");
@@ -109,7 +109,7 @@ public class ClienteDAO implements IClienteDAO {
         Root<Cliente> root=cq.from(Cliente.class);
         
         cq.select(root).where(cb.equal(root.get("nombreCompleto"), RFC)).orderBy(cb.asc(root.get("nombreCompleto")));
-        Cliente resultado=em.find(Cliente.class, cq);
+        Cliente resultado=em.createQuery(cq).getSingleResult();
         em.getTransaction().commit();
         if(resultado==null){
             System.out.println("No se encontro el cliente");
