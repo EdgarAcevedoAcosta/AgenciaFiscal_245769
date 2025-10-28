@@ -13,8 +13,8 @@ import java.util.List;
  * @author edgar
  */
 public interface IAdquiereLicenciaDAO {
-    public void agregar(AdquiereLiciencia adquiereLicencia)throws SQLException;
-    public void actualizar(Long id, AdquiereLiciencia adLicNueva)throws SQLException;
-    public AdquiereLiciencia consultar(Long idAdLic)throws SQLException;
-    public List<AdquiereLiciencia> consultarTodas()throws SQLException;
+    public void agregar(AdquiereLiciencia adquiereLicencia);
+    public void actualizar(Long id, AdquiereLiciencia adLicNueva);
+    public AdquiereLiciencia consultar(Long idAdLic);
+    public List<AdquiereLiciencia> consultarTodas();
 }

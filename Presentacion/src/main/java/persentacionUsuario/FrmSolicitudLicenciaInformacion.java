@@ -4,7 +4,16 @@
  */
 package persentacionUsuario;
 
+import entities.AdquiereLiciencia;
 import entities.Cliente;
+import entities.PlacasCosto;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+import presentacion.FrmConfirmacionCompra;
 
 /**
  *
@@ -157,12 +166,35 @@ public class FrmSolicitudLicenciaInformacion extends javax.swing.JFrame {
         // TODO add your handling code here:
         FrmAgregarUsuario frmA=new FrmAgregarUsuario(ahnosLic);
         frmA.setVisible(true);
+        
+        
+        dispose();
     }//GEN-LAST:event_btnCostosLicenciasActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
         //validacion de rfc y busqueda del cliente 
         //FrmConfirmacionCompra frmC=new FrmConfirmacionCompra();
+        if (jTextField1.getText() == null || jTextField1.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Advertencia!!", "El RFC Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
+            jTextField1.setText("");
+        }
+        String regex = "^[A-Z&Ñ]{3,4}[0-9]{6}[A-Z0-9]{3}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(jTextField1.getText().toUpperCase());
+        if(matcher.matches()){
+            Cliente cl=new Cliente();
+            AdquiereLiciencia ps=new AdquiereLiciencia();
+            cl= new Dao.ClienteDAO().consultaNombre(jTextField1.getText());
+            ps= new Dao.AdquiereLicenciaDAO().consultar(Long.valueOf(ahnosLic));
+            FrmConfirmacionCompra frm=new FrmConfirmacionCompra(cliente, ps, ahnosLic);
+            frm.setVisible(true);
+            dispose();
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Advertencia!!", "El RFC no es Validado", JOptionPane.INFORMATION_MESSAGE);
+            jTextField1.setText("");
+        }
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
 

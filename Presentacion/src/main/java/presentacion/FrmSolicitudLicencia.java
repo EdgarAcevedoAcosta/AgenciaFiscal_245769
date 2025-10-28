@@ -168,6 +168,7 @@ public class FrmSolicitudLicencia extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion(1);
+        dispose();
     }//GEN-LAST:event_btnHacerUnAnhoActionPerformed
 
     private void btnModuloLic1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloLic1ActionPerformed
@@ -178,15 +179,19 @@ public class FrmSolicitudLicencia extends javax.swing.JFrame {
     private void btnHacerDosAnhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHacerDosAnhoActionPerformed
         // TODO add your handling code here:
         FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion(2);
+        dispose();
     }//GEN-LAST:event_btnHacerDosAnhoActionPerformed
 
     private void btnHacerTresAnho1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHacerTresAnho1ActionPerformed
         // TODO add your handling code here:
         FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion(3);
+        dispose();
     }//GEN-LAST:event_btnHacerTresAnho1ActionPerformed
 
     private void btnCostosLicenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCostosLicenciasActionPerformed
         // TODO add your handling code here:
+        
+        dispose();
     }//GEN-LAST:event_btnCostosLicenciasActionPerformed
 
     

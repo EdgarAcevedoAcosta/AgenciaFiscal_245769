@@ -5,13 +5,16 @@
 package Dao;
 
 import entities.AdquiereLiciencia;
+import entities.Cliente;
 import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -25,7 +28,7 @@ public class AdquiereLicenciaDAO implements IAdquiereLicenciaDAO{
     }
     
     @Override
-    public void agregar(AdquiereLiciencia adquiereLicencia) throws SQLException {
+    public void agregar(AdquiereLiciencia adquiereLicencia)  {
         EntityManager em = managerFactory.createEntityManager();
         em.getTransaction().begin();
         em.persist(adquiereLicencia);
@@ -34,7 +37,7 @@ public class AdquiereLicenciaDAO implements IAdquiereLicenciaDAO{
     }
 
     @Override
-    public void actualizar(Long id, AdquiereLiciencia adLicNueva) throws SQLException {
+    public void actualizar(Long id, AdquiereLiciencia adLicNueva)  {
         EntityManager em = managerFactory.createEntityManager();
         em.getTransaction().begin();
         AdquiereLiciencia adLic=em.find(AdquiereLiciencia.class, id);
@@ -52,7 +55,7 @@ public class AdquiereLicenciaDAO implements IAdquiereLicenciaDAO{
     }
 
     @Override
-    public AdquiereLiciencia consultar(Long idAdLic) throws SQLException {
+    public AdquiereLiciencia consultar(Long idAdLic) {
         EntityManager em = managerFactory.createEntityManager();
         em.getTransaction().begin();
         AdquiereLiciencia adLic=em.find(AdquiereLiciencia.class, idAdLic);
@@ -66,7 +69,7 @@ public class AdquiereLicenciaDAO implements IAdquiereLicenciaDAO{
     }
 
     @Override
-    public List<AdquiereLiciencia> consultarTodas() throws SQLException {
+    public List<AdquiereLiciencia> consultarTodas()  {
         EntityManager em = managerFactory.createEntityManager();
         em.getTransaction().begin();
         CriteriaQuery cr= em.getCriteriaBuilder().createQuery();
@@ -78,5 +81,21 @@ public class AdquiereLicenciaDAO implements IAdquiereLicenciaDAO{
         return redes;
 
     }
-    
+   /* public boolean consultaFechaVigencia(){
+        EntityManager em = managerFactory.createEntityManager();
+        em.getTransaction().begin();
+        CriteriaBuilder cb=em.getCriteriaBuilder();
+        CriteriaQuery<AdquiereLiciencia> cq= cb.createQuery(AdquiereLiciencia.class);
+        Root<AdquiereLiciencia> root=cq.from(AdquiereLiciencia.class);
+        
+        cq
+        Cliente resultado=em.find(Cliente.class, cq);
+        em.getTransaction().commit();
+        if(resultado==null){
+            System.out.println("No se encontro el cliente");
+            return null;
+        }else{
+            return resultado;
+        } 
+    }*/
 }

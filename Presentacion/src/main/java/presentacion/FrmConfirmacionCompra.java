@@ -4,8 +4,13 @@
  */
 package presentacion;
 
+import entities.AdquiereLiciencia;
 import entities.Cliente;
 import entities.PlacasCosto;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -13,13 +18,21 @@ import entities.PlacasCosto;
  */
 public class FrmConfirmacionCompra extends javax.swing.JFrame {
     private Cliente cliente;
-    private PlacasCosto placasCostos;
+    private AdquiereLiciencia adq;
+    private int anhosLic;
     /**
      * Creates new form FrmConfirmacionCompra
      */
-    public FrmConfirmacionCompra(Cliente cliente,PlacasCosto placasCostos) {
+    public FrmConfirmacionCompra(Cliente cliente,AdquiereLiciencia adq, int anhosLic) {
+        //maybe esto es LicCOstos
         this.cliente=cliente;
-        this.placasCostos=placasCostos;
+        this.adq=adq;
+        this.anhosLic=anhosLic;
+        adq.setVigencia(anhosLic);
+        adq.setCostoTotal(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(anhosLic)).getCosto());
+        txtAnhos.setText(String.valueOf(adq.getVigencia())+ "Años");
+        txtCosto.setText(String.valueOf(adq.getCostoTotal()));
+        txtCostoTotal.setText(String.valueOf(adq.getCostoTotal()));
         initComponents();
     }
 
@@ -179,10 +192,21 @@ public class FrmConfirmacionCompra extends javax.swing.JFrame {
 
     private void btnModuloLic1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloLic1ActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnModuloLic1ActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here: 
+        // Validacion que no pude a hacer dicencia
+        
+        adq.setCliente(new Dao.ClienteDAO().consultarTodos());
+        adq.setFechaCompra(LocalDate.now());
+        LocalDate fecha=LocalDate.now();
+        fecha.plusYears(anhosLic);
+        adq.setFechaExpiración(fecha);
+        adq.setLicenciaCostos(new Dao.LicienciaCostosDAO().consultarTodas());
+        adq.setCostoTotal(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(anhosLic)).getCosto());
+        new Dao.AdquiereLicenciaDAO().agregar(adq); 
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     

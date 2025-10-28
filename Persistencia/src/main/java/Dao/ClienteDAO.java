@@ -12,7 +12,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -65,7 +67,8 @@ public class ClienteDAO implements IClienteDAO {
             return null;
         }else{
             return adLic;
-        }    }
+        }    
+    }
 
     @Override
     public List<Cliente> consultarTodos() {
@@ -78,6 +81,42 @@ public class ClienteDAO implements IClienteDAO {
         List<Cliente> redes=q.getResultList();
         em.getTransaction().commit();
         return redes;    
+    }
+    
+    public Cliente consultaRFC(String RFC){
+        EntityManager em = managerFactory.createEntityManager();
+        em.getTransaction().begin();
+        CriteriaBuilder cb=em.getCriteriaBuilder();
+        CriteriaQuery<Cliente> cq= cb.createQuery(Cliente.class);
+        Root<Cliente> root=cq.from(Cliente.class);
+        
+        cq.select(root).where(cb.equal(root.get("rfc"), RFC)).orderBy(cb.asc(root.get("rfc")));
+        Cliente resultado=em.find(Cliente.class, cq);
+        em.getTransaction().commit();
+        if(resultado==null){
+            System.out.println("No se encontro el cliente");
+            return null;
+        }else{
+            return resultado;
+        } 
+    }
+    
+    public Cliente consultaNombre(String RFC){
+        EntityManager em = managerFactory.createEntityManager();
+        em.getTransaction().begin();
+        CriteriaBuilder cb=em.getCriteriaBuilder();
+        CriteriaQuery<Cliente> cq= cb.createQuery(Cliente.class);
+        Root<Cliente> root=cq.from(Cliente.class);
+        
+        cq.select(root).where(cb.equal(root.get("nombreCompleto"), RFC)).orderBy(cb.asc(root.get("nombreCompleto")));
+        Cliente resultado=em.find(Cliente.class, cq);
+        em.getTransaction().commit();
+        if(resultado==null){
+            System.out.println("No se encontro el cliente");
+            return null;
+        }else{
+            return resultado;
+        } 
     }
     
 }

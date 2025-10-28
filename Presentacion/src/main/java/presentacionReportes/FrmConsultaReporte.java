@@ -186,6 +186,7 @@ public class FrmConsultaReporte extends javax.swing.JFrame {
 
     private void btnModuloLic1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloLic1ActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnModuloLic1ActionPerformed
 
     private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed

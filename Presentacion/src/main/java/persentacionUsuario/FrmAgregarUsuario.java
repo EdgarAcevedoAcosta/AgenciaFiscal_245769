@@ -4,6 +4,19 @@
  */
 package persentacionUsuario;
 
+import entities.AdquiereLiciencia;
+import entities.Cliente;
+import entities.PlacasCosto;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import presentacion.FrmConfirmacionCompra;
 
 /**
@@ -216,6 +229,56 @@ public class FrmAgregarUsuario extends javax.swing.JFrame {
         //Validaciones y persistencia de agregar
         
         //FrmConfirmacionCompra frmC=new FrmConfirmacionCompra();
+        Cliente cl=new Cliente();
+        if (txtRFC.getText() == null || txtRFC.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Advertencia!!", "El RFC Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if (txtNombre.getText() == null || txtNombre.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Advertencia!!", "El Nombre Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if (txtFechaNacimiento.getText() == null || txtFechaNacimiento.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Advertencia!!", "La Fecha de Nacimiento Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if (txtTelefono.getText() == null || txtTelefono.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Advertencia!!", "La Fecha de Nacimiento Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if(txtRFC.getText()!= null  && txtNombre.getText() != null && 
+                txtFechaNacimiento.getText() != null && txtTelefono.getText() != null ){
+            String regex = "^[A-Z&Ñ]{3,4}[0-9]{6}[A-Z0-9]{3}$";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(txtRFC.getText().toUpperCase());
+            AdquiereLiciencia ps=new AdquiereLiciencia();
+            try{
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd")
+                    .withResolverStyle(ResolverStyle.STRICT);
+                LocalDate fechaNacimiento= LocalDate.parse(txtFechaNacimiento.getText(), formatter);
+                if(matcher.matches()){
+                    if(cbxDiscapacidad.isSelected()){
+                        cl.setDiscapacidad("true");
+                         
+                    }else{
+                        cl.setDiscapacidad("false");
+                         
+                    }
+                    ps= new Dao.AdquiereLicenciaDAO().consultar(Long.valueOf(anhosLic));
+                    cl.setFechaNacimiento(fechaNacimiento);
+                    cl.setNombreCompleto(txtNombre.getText());
+                    cl.setRfc(txtRFC.getText());
+                    cl.setTelefono(txtTelefono.getText());
+                    new Dao.ClienteDAO().agregar(cl);
+                    Cliente clienteClon=new Cliente();
+                    clienteClon=new Dao.ClienteDAO().consultaNombre(cl.getNombreCompleto());
+                    FrmConfirmacionCompra frm=new FrmConfirmacionCompra(clienteClon, ps, anhosLic);
+                    frm.setVisible(true);
+                    
+                    dispose();
+                }
+            }catch (DateTimeParseException e) {
+                JOptionPane.showMessageDialog(this, "Advertencia!!", "Error: Formato de fecha inválido. Use: yyyy-mm-dd", JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+        }
+        
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
 

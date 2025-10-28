@@ -128,12 +128,14 @@ public class FrmQueQuiereConsultar extends javax.swing.JFrame {
         // TODO add your handling code here:
         FrmSolicitarPlaca frmS=new FrmSolicitarPlaca();
         frmS.setVisible(true);
+         dispose();
     }//GEN-LAST:event_btnSolicitudActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
         FrmBuscarPlaca frm =new FrmBuscarPlaca();
         frm.setVisible(true);
+         dispose();
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnModuloLic1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModuloLic1ActionPerformed
