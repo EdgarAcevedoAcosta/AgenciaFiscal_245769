@@ -23,10 +23,9 @@ public class FrmConfirmacionCompra extends javax.swing.JFrame {
     /**
      * Creates new form FrmConfirmacionCompra
      */
-    public FrmConfirmacionCompra(Cliente cliente,AdquiereLiciencia adq, int anhosLic) {
+    public FrmConfirmacionCompra(Cliente cliente, int anhosLic) {
         //maybe esto es LicCOstos
         this.cliente=cliente;
-        this.adq=adq;
         this.anhosLic=anhosLic;
         adq.setVigencia(anhosLic);
         adq.setCostoTotal(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(anhosLic)).getCosto());

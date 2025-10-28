@@ -4,17 +4,20 @@
  */
 package presentacionConsultas;
 
+import componentes.Convertidor;
+
 /**
  *
  * @author edgar
  */
 public class FrmCostosLicencias extends javax.swing.JFrame {
-
+    private Convertidor convertir;
     /**
      * Creates new form FrmCostosLicencias
      */
     public FrmCostosLicencias() {
         initComponents();
+        setVisible(true);
     }
 
     /**
@@ -49,7 +52,7 @@ public class FrmCostosLicencias extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/componentes/CostoLicencia.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\edgar\\Documents\\NetBeansProjects\\AgenciaFiscal_245769\\AgenciaFiscal_245769\\Presentacion\\src\\main\\java\\componentes\\CostoLicencia.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

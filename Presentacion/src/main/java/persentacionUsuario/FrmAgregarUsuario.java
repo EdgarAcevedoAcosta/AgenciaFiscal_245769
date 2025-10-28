@@ -9,6 +9,7 @@ import entities.Cliente;
 import entities.PlacasCosto;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
@@ -247,34 +248,29 @@ public class FrmAgregarUsuario extends javax.swing.JFrame {
             String regex = "^[A-Z&Ñ]{3,4}[0-9]{6}[A-Z0-9]{3}$";
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(txtRFC.getText().toUpperCase());
-            AdquiereLiciencia ps=new AdquiereLiciencia();
-            try{
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd")
-                    .withResolverStyle(ResolverStyle.STRICT);
-                LocalDate fechaNacimiento= LocalDate.parse(txtFechaNacimiento.getText(), formatter);
-                if(matcher.matches()){
-                    if(cbxDiscapacidad.isSelected()){
-                        cl.setDiscapacidad("true");
+            //AdquiereLiciencia ps=new AdquiereLiciencia();
+            //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd");   
+            LocalDate fechaNacimiento= LocalDate.parse(txtFechaNacimiento.getText());
+            if(matcher.matches()){
+                /*if(cbxDiscapacidad.isSelected()){
+                    cl.setDiscapacidad("true");
                          
-                    }else{
-                        cl.setDiscapacidad("false");
+                }else{
+                    cl.setDiscapacidad("false");
                          
-                    }
-                    ps= new Dao.AdquiereLicenciaDAO().consultar(Long.valueOf(anhosLic));
-                    cl.setFechaNacimiento(fechaNacimiento);
-                    cl.setNombreCompleto(txtNombre.getText());
-                    cl.setRfc(txtRFC.getText());
-                    cl.setTelefono(txtTelefono.getText());
-                    new Dao.ClienteDAO().agregar(cl);
-                    Cliente clienteClon=new Cliente();
-                    clienteClon=new Dao.ClienteDAO().consultaNombre(cl.getNombreCompleto());
-                    FrmConfirmacionCompra frm=new FrmConfirmacionCompra(clienteClon, ps, anhosLic);
-                    frm.setVisible(true);
+                }*/
+            //ps= new Dao.AdquiereLicenciaDAO().consultar(Long.valueOf(anhosLic));
+            cl.setFechaNacimiento(fechaNacimiento);
+            cl.setNombreCompleto(txtNombre.getText());
+            cl.setRfc(txtRFC.getText());
+            cl.setTelefono(txtTelefono.getText());
+            new Dao.ClienteDAO().agregar(cl);
+            Cliente clienteClon=new Cliente();
+            clienteClon=new Dao.ClienteDAO().consultaNombre(cl.getNombreCompleto());
+            FrmConfirmacionCompra frm=new FrmConfirmacionCompra(clienteClon, anhosLic);
+            frm.setVisible(true);
                     
-                    dispose();
-                }
-            }catch (DateTimeParseException e) {
-                JOptionPane.showMessageDialog(this, "Advertencia!!", "Error: Formato de fecha inválido. Use: yyyy-mm-dd", JOptionPane.INFORMATION_MESSAGE);
+            dispose();
             }
             
         }

@@ -4,6 +4,7 @@
  */
 package presentacion;
 
+import componentes.AgregarDatos;
 import presentacionReportes.FrmConsultaReporte;
 
 /**
@@ -18,6 +19,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public FrmMenu() {
         initComponents();
         setVisible(true);
+        
     }
 
     /**

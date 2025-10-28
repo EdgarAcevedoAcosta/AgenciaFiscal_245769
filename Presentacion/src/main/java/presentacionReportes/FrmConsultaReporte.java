@@ -43,7 +43,7 @@ public class FrmConsultaReporte extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnModuloLic1.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Red"));
+        btnModuloLic1.setBackground(new java.awt.Color(203, 77, 77));
         btnModuloLic1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnModuloLic1.setForeground(new java.awt.Color(255, 255, 255));
         btnModuloLic1.setText("Cancelar");
@@ -93,7 +93,7 @@ public class FrmConsultaReporte extends javax.swing.JFrame {
         txtRFC1.setText("jTextField1");
         txtRFC1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btnFiltrar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
+        btnFiltrar.setBackground(new java.awt.Color(51, 143, 193));
         btnFiltrar.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnFiltrar.setForeground(new java.awt.Color(255, 255, 255));
         btnFiltrar.setText("Filtrar");

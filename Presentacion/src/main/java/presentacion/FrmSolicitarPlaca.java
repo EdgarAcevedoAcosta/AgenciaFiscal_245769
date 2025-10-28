@@ -5,6 +5,7 @@
 package presentacion;
 
 import persentacionUsuario.FrmAgregarPlaca;
+import presentacionConsultas.FrmCostosLicencias;
 
 /**
  *
@@ -163,6 +164,8 @@ public class FrmSolicitarPlaca extends javax.swing.JFrame {
 
     private void btnCostosPlacasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCostosPlacasActionPerformed
         // TODO add your handling code here:
+        new presentacionConsultas.FrmConsultarPlaca();
+        dispose();
     }//GEN-LAST:event_btnCostosPlacasActionPerformed
 
 

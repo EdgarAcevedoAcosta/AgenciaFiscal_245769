@@ -5,6 +5,7 @@
 package presentacion;
 
 import persentacionUsuario.FrmSolicitudLicenciaInformacion;
+import presentacionConsultas.FrmCostosLicencias;
 
 /**
  *
@@ -196,7 +197,7 @@ public class FrmSolicitudLicencia extends javax.swing.JFrame {
 
     private void btnCostosLicenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCostosLicenciasActionPerformed
         // TODO add your handling code here:
-        
+        new presentacionConsultas.FrmConsultarPlaca();
         dispose();
     }//GEN-LAST:event_btnCostosLicenciasActionPerformed
 

@@ -184,10 +184,10 @@ public class FrmSolicitudLicenciaInformacion extends javax.swing.JFrame {
         Matcher matcher = pattern.matcher(jTextField1.getText().toUpperCase());
         if(matcher.matches()){
             Cliente cl=new Cliente();
-            AdquiereLiciencia ps=new AdquiereLiciencia();
+            //AdquiereLiciencia ps=new AdquiereLiciencia();
             cl= new Dao.ClienteDAO().consultaNombre(jTextField1.getText());
-            ps= new Dao.AdquiereLicenciaDAO().consultar(Long.valueOf(ahnosLic));
-            FrmConfirmacionCompra frm=new FrmConfirmacionCompra(cliente, ps, ahnosLic);
+            //ps= new Dao.AdquiereLicenciaDAO().consultar(Long.valueOf(ahnosLic));
+            FrmConfirmacionCompra frm=new FrmConfirmacionCompra(cliente, ahnosLic);
             frm.setVisible(true);
             dispose();
             
