@@ -18,10 +18,10 @@ public class Inicio {
         //s.AgregarCostosLicencias();
         //s.AgregarCostosPlacas();
         //s.AgregarCatalogoMarcasLineas();
-        s.AgregarAutomoviles();
+        //s.AgregarAutomoviles();
         //s.AgregarLicencias();
-        //s.AgregarLicencias();
+        //s.AgregarEmplaca();
         
-        //new presentacion.FrmMenu();
+        new presentacion.FrmMenu();
     }
 }

@@ -118,6 +118,8 @@ public class FrmConsultaGeneral extends javax.swing.JFrame {
 
         jScrollPane1.setBackground(new java.awt.Color(51, 51, 51));
         jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
 
         btnFiltrar.setBackground(new java.awt.Color(51, 143, 193));
         btnFiltrar.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N

@@ -252,13 +252,13 @@ public class FrmAgregarUsuario extends javax.swing.JFrame {
             //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd");   
             LocalDate fechaNacimiento= LocalDate.parse(txtFechaNacimiento.getText());
             if(matcher.matches()){
-                /*if(cbxDiscapacidad.isSelected()){
+                if(cbxDiscapacidad.isSelected()){
                     cl.setDiscapacidad("true");
                          
                 }else{
                     cl.setDiscapacidad("false");
                          
-                }*/
+                }
             //ps= new Dao.AdquiereLicenciaDAO().consultar(Long.valueOf(anhosLic));
             cl.setFechaNacimiento(fechaNacimiento);
             cl.setNombreCompleto(txtNombre.getText());

@@ -20,6 +20,7 @@ public class FrmConfirmacionCompra extends javax.swing.JFrame {
     private Cliente cliente;
     private AdquiereLiciencia adq;
     private int anhosLic;
+    private int id;
     /**
      * Creates new form FrmConfirmacionCompra
      */
@@ -27,11 +28,14 @@ public class FrmConfirmacionCompra extends javax.swing.JFrame {
         //maybe esto es LicCOstos
         this.cliente=cliente;
         this.anhosLic=anhosLic;
-        adq.setVigencia(anhosLic);
-        adq.setCostoTotal(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(anhosLic)).getCosto());
-        txtAnhos.setText(String.valueOf(adq.getVigencia())+ "Años");
-        txtCosto.setText(String.valueOf(adq.getCostoTotal()));
-        txtCostoTotal.setText(String.valueOf(adq.getCostoTotal()));
+        adq=new AdquiereLiciencia();
+        id =anhosLic;
+        if(cliente.getDiscapacidad()=="true"){
+            id=id+1;
+        }
+        txtAnhos.setText(String.valueOf(anhosLic)+ "Años");
+        txtCosto.setText(String.valueOf(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(id))));
+        txtCostoTotal.setText(String.valueOf(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(id))));
         initComponents();
     }
 
@@ -197,6 +201,10 @@ public class FrmConfirmacionCompra extends javax.swing.JFrame {
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here: 
         // Validacion que no pude a hacer dicencia
+        
+        adq.setVigencia(anhosLic);
+        
+        adq.setCostoTotal(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(id)).getCosto());
         
         adq.setCliente(new Dao.ClienteDAO().consultarTodos());
         adq.setFechaCompra(LocalDate.now());

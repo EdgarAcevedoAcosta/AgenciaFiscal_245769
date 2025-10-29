@@ -38,7 +38,7 @@ public class AgregarDatos {
         pc.setTipoTramite("Auto Nuevo");
         pc.setCosto(1500.00);
         PlacasCosto pcs=new PlacasCosto();
-        pcs.setTipoTramite("Auto Nuevo");
+        pcs.setTipoTramite("Auto Usado");
         pcs.setCosto(1000.00);
         
         new Dao.PlacasCostosDAO().agregar(pc);
@@ -86,7 +86,7 @@ public class AgregarDatos {
         LocalDate fechaE= LocalDate.parse("2011-07-15");
         ad.setFechaCompra(fechaCompra);
         ad.setFechaExpiración(fechaE);
-        ad.setVigencia(new Dao.AdquiereLicenciaDAO().consultar(Long.valueOf(1)).getVigencia());
+        ad.setVigencia(1);
         ad.setLicenciaCostos(new Dao.LicienciaCostosDAO().consultarTodas());
         ad.setCostoTotal(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(1)).getCosto());
         new Dao.AdquiereLicenciaDAO().agregar(ad);
@@ -101,8 +101,8 @@ public class AgregarDatos {
         Automovil au= new Automovil();
         au.setColor("Negro");
         au.setNumeroSerie("ADS-456");
-        Long idC=new Dao.CatalogoMarcaLineaDAO().consultaCatalogo("Toyota", "Deportivo", "Supre");
-        au.setCatalogoMarcaLinea(new Dao.CatalogoMarcaLineaDAO().consultar(idC));
+        //CatalogoMarcaLinea idC=new Dao.CatalogoMarcaLineaDAO().consultaCatalogo("Toyota", "Deportivo", "Supre");
+        //au.setCatalogoMarcaLinea(new Dao.CatalogoMarcaLineaDAO().consultar(idC.getId_CatalogoMarcaLinea()));
         au.setCliente(new Dao.ClienteDAO().consultar(Long.valueOf(1)));
         
         new Dao.AutomovilDAO().agregar(au);
@@ -147,11 +147,11 @@ public class AgregarDatos {
         //Automovil as=new Dao.AutomovilDAO()
         // Lista de autos  llamando al autos dao.idCliente         
         Cliente c= new Dao.ClienteDAO().consultar(Long.valueOf(1));
-        emplaca.setAutomovil(new Dao.AutomovilDAO().consultaClientesId(c)); 
+        emplaca.setAutomovil(new Dao.AutomovilDAO().consultarTodas()); 
         new Dao.EmpacaDAO().agregar(emplaca);
         
-        c.setVehiculo(new Dao.VehiculosDAO().consultaClientesId(c));
-        new Dao.ClienteDAO().actualizar(c.getId_Cliente(), c);
+        //c.setVehiculo(new Dao.VehiculosDAO().consultaClientesId(c));
+        //new Dao.ClienteDAO().actualizar(c.getId_Cliente(), c);
     }
     
 }
