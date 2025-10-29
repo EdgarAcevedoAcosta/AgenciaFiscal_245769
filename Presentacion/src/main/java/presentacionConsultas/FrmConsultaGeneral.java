@@ -233,8 +233,8 @@ public class FrmConsultaGeneral extends javax.swing.JFrame {
     private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
         // TODO add your handling code here:
         Cliente cliente = null;
-        if(txtNombre.getText() != null){
-            if(txtRFC.getText() != null){
+        if(txtNombre.getText() != null || txtRFC.getText() != null){
+            if(txtRFC.getText() != null && txtNombre.getText() == null){
                 String regex = "^[A-Z&Ñ]{3,4}[0-9]{6}[A-Z0-9]{3}$";
                 Pattern pattern = Pattern.compile(regex);
                 Matcher matcher = pattern.matcher(txtRFC.getText().toUpperCase());
@@ -243,7 +243,7 @@ public class FrmConsultaGeneral extends javax.swing.JFrame {
                 }else{
                     JOptionPane.showMessageDialog(this, "Advertencia!!", "La el RFC no es Valido", JOptionPane.INFORMATION_MESSAGE);
                 }
-            }else{
+            }else if(txtRFC.getText() == null && txtNombre.getText() != null){
                 cliente=new Dao.ClienteDAO().consultaNombre(txtNombre.getText());
             }
         }else{

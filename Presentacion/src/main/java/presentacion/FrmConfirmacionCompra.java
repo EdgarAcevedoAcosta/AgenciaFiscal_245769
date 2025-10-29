@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class FrmConfirmacionCompra extends javax.swing.JFrame {
     private Cliente cliente;
     private AdquiereLiciencia adq;
-    private int anhosLic;
+    private int an;
     private int id;
     /**
      * Creates new form FrmConfirmacionCompra
@@ -27,16 +27,17 @@ public class FrmConfirmacionCompra extends javax.swing.JFrame {
     public FrmConfirmacionCompra(Cliente cliente, int anhosLic) {
         //maybe esto es LicCOstos
         this.cliente=cliente;
-        this.anhosLic=anhosLic;
+        this.an=anhosLic;
+        
+        //txtAnhos.setText(String.valueOf(an)+ "Años");
+        //txtCosto.setText(String.valueOf(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(id)).getCosto()));
+        //txtCostoTotal.setText(String.valueOf(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(id)).getCosto()));
+        initComponents();
         adq=new AdquiereLiciencia();
-        id =anhosLic;
+        id =an;
         if(cliente.getDiscapacidad()=="true"){
             id=id+1;
         }
-        txtAnhos.setText(String.valueOf(anhosLic)+ "Años");
-        txtCosto.setText(String.valueOf(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(id))));
-        txtCostoTotal.setText(String.valueOf(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(id))));
-        initComponents();
     }
 
     /**
@@ -202,18 +203,22 @@ public class FrmConfirmacionCompra extends javax.swing.JFrame {
         // TODO add your handling code here: 
         // Validacion que no pude a hacer dicencia
         
-        adq.setVigencia(anhosLic);
+        adq.setVigencia(an);
         
         adq.setCostoTotal(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(id)).getCosto());
         
         adq.setCliente(new Dao.ClienteDAO().consultarTodos());
         adq.setFechaCompra(LocalDate.now());
         LocalDate fecha=LocalDate.now();
-        fecha.plusYears(anhosLic);
+        fecha.plusYears(an);
         adq.setFechaExpiración(fecha);
         adq.setLicenciaCostos(new Dao.LicienciaCostosDAO().consultarTodas());
-        adq.setCostoTotal(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(anhosLic)).getCosto());
+        adq.setCostoTotal(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(an)).getCosto());
+        //validacion
         new Dao.AdquiereLicenciaDAO().agregar(adq); 
+        
+        
+        dispose();
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     

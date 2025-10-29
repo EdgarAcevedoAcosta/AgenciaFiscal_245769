@@ -17,10 +17,10 @@ public class Inicio {
         //s.AgregarClietes();
         //s.AgregarCostosLicencias();
         //s.AgregarCostosPlacas();
-        //s.AgregarCatalogoMarcasLineas();
         //s.AgregarAutomoviles();
-        //s.AgregarLicencias();
-        //s.AgregarEmplaca();
+        //s.AgregarCatalogoMarcasLineas();
+        s.AgregarLicencias();
+        s.AgregarEmplaca();
         
         new presentacion.FrmMenu();
     }

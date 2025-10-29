@@ -25,8 +25,8 @@ public class FrmSolicitudLicenciaInformacion extends javax.swing.JFrame {
     /**
      * Creates new form FrmSolicitudLicenciaInformacion
      */
-    public FrmSolicitudLicenciaInformacion(int anhosLic) {
-        this.ahnosLic=anhosLic;
+    public FrmSolicitudLicenciaInformacion(int ahnosLic) {
+        this.ahnosLic = ahnosLic;
         initComponents();
     }
 
@@ -178,23 +178,25 @@ public class FrmSolicitudLicenciaInformacion extends javax.swing.JFrame {
         if (jTextField1.getText() == null || jTextField1.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Advertencia!!", "El RFC Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
             jTextField1.setText("");
-        }
-        String regex = "^[A-Z&Ñ]{3,4}[0-9]{6}[A-Z0-9]{3}$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(jTextField1.getText().toUpperCase());
-        if(matcher.matches()){
-            Cliente cl=new Cliente();
-            //AdquiereLiciencia ps=new AdquiereLiciencia();
-            cl= new Dao.ClienteDAO().consultaNombre(jTextField1.getText());
-            //ps= new Dao.AdquiereLicenciaDAO().consultar(Long.valueOf(ahnosLic));
-            FrmConfirmacionCompra frm=new FrmConfirmacionCompra(cliente, ahnosLic);
-            frm.setVisible(true);
-            dispose();
-            
         }else{
-            JOptionPane.showMessageDialog(this, "Advertencia!!", "El RFC no es Validado", JOptionPane.INFORMATION_MESSAGE);
-            jTextField1.setText("");
+            String regex = "^[A-Z&Ñ]{3,4}[0-9]{6}[A-Z0-9]{3}$";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(jTextField1.getText().toUpperCase());
+            if(matcher.matches()){
+                Cliente cl=new Cliente();
+                //AdquiereLiciencia ps=new AdquiereLiciencia();
+                cl= new Dao.ClienteDAO().consultaRFC(jTextField1.getText());
+                //ps= new Dao.AdquiereLicenciaDAO().consultar(Long.valueOf(ahnosLic));
+                FrmConfirmacionCompra frm=new FrmConfirmacionCompra(cl, ahnosLic);
+                frm.setVisible(true);
+                dispose();
+
+            }else{
+                JOptionPane.showMessageDialog(this, "Advertencia!!", "El RFC no es Validado", JOptionPane.INFORMATION_MESSAGE);
+                jTextField1.setText("");
+            }
         }
+        
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
 

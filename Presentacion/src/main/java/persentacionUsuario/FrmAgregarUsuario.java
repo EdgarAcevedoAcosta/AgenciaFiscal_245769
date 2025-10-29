@@ -266,7 +266,7 @@ public class FrmAgregarUsuario extends javax.swing.JFrame {
             cl.setTelefono(txtTelefono.getText());
             new Dao.ClienteDAO().agregar(cl);
             Cliente clienteClon=new Cliente();
-            clienteClon=new Dao.ClienteDAO().consultaNombre(cl.getNombreCompleto());
+            clienteClon=new Dao.ClienteDAO().consultaRFC(txtRFC.getText());
             FrmConfirmacionCompra frm=new FrmConfirmacionCompra(clienteClon, anhosLic);
             frm.setVisible(true);
                     

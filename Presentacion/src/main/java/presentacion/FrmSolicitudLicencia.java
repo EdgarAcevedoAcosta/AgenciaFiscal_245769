@@ -170,8 +170,8 @@ public class FrmSolicitudLicencia extends javax.swing.JFrame {
 
     private void btnHacerUnAnhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHacerUnAnhoActionPerformed
         // TODO add your handling code here:
-        
-        FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion(1);
+        anhosLic=1;
+        FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion(anhosLic);
         frmSol.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnHacerUnAnhoActionPerformed
@@ -183,14 +183,16 @@ public class FrmSolicitudLicencia extends javax.swing.JFrame {
 
     private void btnHacerDosAnhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHacerDosAnhoActionPerformed
         // TODO add your handling code here:
-        FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion(2);
+        anhosLic=2;
+        FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion(anhosLic);
         frmSol.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnHacerDosAnhoActionPerformed
 
     private void btnHacerTresAnho1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHacerTresAnho1ActionPerformed
         // TODO add your handling code here:
-        FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion(3);
+        anhosLic=3;
+        FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion(anhosLic);
         frmSol.setVisible(true); 
         dispose();
     }//GEN-LAST:event_btnHacerTresAnho1ActionPerformed

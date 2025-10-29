@@ -308,6 +308,10 @@ public class FrmAgregarPlaca extends javax.swing.JFrame {
                     CatalogoMarcaLinea catalogoMarcaLinea =new CatalogoMarcaLinea();
                     catalogoMarcaLinea= new Dao.CatalogoMarcaLineaDAO().
                             consultaCatalogo(txtPlaca1.getText(), txtPlaca2.getText(), txtPlaca3.getText());
+                    if(catalogoMarcaLinea==null){
+                        JOptionPane.showMessageDialog(this, "Advertencia!!", "La Numero de Serie Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
+                        dispose();
+                    }
                     Automovil auto=new Automovil();
                     auto.setCliente(cliente);
                     auto.setColor(txtNumSerie1.getText());
@@ -371,7 +375,7 @@ public class FrmAgregarPlaca extends javax.swing.JFrame {
                     auto= new Dao.AutomovilDAO().consultaNumeroSerie(txtNumSerie.getText());
                     PlacasCosto costo=new PlacasCosto();
                     costo= new Dao.PlacasCostosDAO().consultar(idTramite);
-                    auto.setCatalogoMarcaLinea(catalogoMarcaLinea);
+                    //auto.setCatalogoMarcaLinea(catalogoMarcaLinea);
                     //auto= new Dao.AutomovilDAO()
                     emplaca.setEstado("Activo");
                     emplaca.setNombrePlaca(txtPlaca.getText());

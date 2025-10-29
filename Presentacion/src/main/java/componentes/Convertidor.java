@@ -87,19 +87,18 @@ public class Convertidor {
     public DefaultTableModel AquiereLicenTableModel(List<AdquiereLiciencia> listaAutos) {
         Object tabla[][];
         if (listaAutos != null) {
-            tabla = new Object[listaAutos.size()][5];
+            tabla = new Object[listaAutos.size()][4];
             double total=0.0;
             for (int i = 0; i < listaAutos.size(); i++) {
                 // Obten una medico de la lista de medicos
                 
                 AdquiereLiciencia catalogo = listaAutos.get(i);
                 // Almacena sus atributos en la fila del arreglo
-                total=total +catalogo.getCostoTotal();
                 tabla[i][0] = catalogo.getId_Licencia();
                 tabla[i][1] = catalogo.getVigencia()+" Años";
                 tabla[i][2] = catalogo.getFechaCompra();
                 tabla[i][3] = catalogo.getCostoTotal();
-                tabla[i][4] = total;
+
 
             }
             return new DefaultTableModel(tabla, nombresColumnaTablaAdquiereLic);

@@ -4,8 +4,11 @@
  */
 package componentes;
 
+import Dao.ClienteDAO;
+import Dao.IClienteDAO;
 import entities.*;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  *
@@ -90,10 +93,11 @@ public class AgregarDatos {
         ad.setLicenciaCostos(new Dao.LicienciaCostosDAO().consultarTodas());
         ad.setCostoTotal(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(1)).getCosto());
         new Dao.AdquiereLicenciaDAO().agregar(ad);
+        IClienteDAO pers= new ClienteDAO();
+        Cliente cl=pers.consultar(Long.valueOf(1));
         
-        Cliente cl=new Dao.ClienteDAO().consultar(Long.valueOf(1));
         cl.setAdquiereLicienciaCliente(ad);
-        new Dao.ClienteDAO().actualizar(Long.valueOf(1), cl);
+        pers.actualizar(Long.valueOf(1), cl);
         
         
     }
@@ -109,28 +113,36 @@ public class AgregarDatos {
         //CatalogoMarcaLinea c=new Dao.CatalogoMarcaLineaDAO().consultaCatalogo("Toyota", "Deportivo", "Supre");
         
         
+        
     }
     public void AgregarCatalogoMarcasLineas(){
         CatalogoMarcaLinea cat1=new CatalogoMarcaLinea();
         cat1.setMarca("Toyota");
         cat1.setLinea("Sedanes");
         cat1.setModelo("Corrolla");
+        cat1.setVehiculos(new Dao.VehiculosDAO().consultarTodas());
         new Dao.CatalogoMarcaLineaDAO().agregar(cat1);
         CatalogoMarcaLinea cat2=new CatalogoMarcaLinea();
         cat2.setMarca("Toyota");
         cat2.setLinea("Sedanes");
         cat2.setModelo("Camry");
+        //cat2.setVehiculos(new Dao.VehiculosDAO().consultarTodas());
         new Dao.CatalogoMarcaLineaDAO().agregar(cat2);
         CatalogoMarcaLinea cat3=new CatalogoMarcaLinea();
         cat3.setMarca("Toyota");
         cat3.setLinea("Deportivos");
         cat3.setModelo("GR86");
+        //cat3.setVehiculos(new Dao.VehiculosDAO().consultarTodas());
         new Dao.CatalogoMarcaLineaDAO().agregar(cat3);
         CatalogoMarcaLinea cat4=new CatalogoMarcaLinea();
         cat4.setMarca("Toyota");
         cat4.setLinea("Deportivos");
         cat4.setModelo("Supra");
+        //cat4.setVehiculos(new Dao.VehiculosDAO().consultarTodas());
         new Dao.CatalogoMarcaLineaDAO().agregar(cat4);
+        
+        
+        
     }
     public void AgregarEmplaca(){
         Empaca emplaca=new Empaca();
@@ -152,6 +164,10 @@ public class AgregarDatos {
         
         //c.setVehiculo(new Dao.VehiculosDAO().consultaClientesId(c));
         //new Dao.ClienteDAO().actualizar(c.getId_Cliente(), c);
+    }
+    public void Addrelaciones(){
+        List<Vehiculo> v=new Dao.VehiculosDAO().consultarTodas();
+        
     }
     
 }
