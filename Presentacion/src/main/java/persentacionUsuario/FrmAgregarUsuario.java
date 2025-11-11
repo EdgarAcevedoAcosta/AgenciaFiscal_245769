@@ -25,11 +25,11 @@ import presentacion.FrmConfirmacionCompra;
  * @author edgar
  */
 public class FrmAgregarUsuario extends javax.swing.JFrame {
-    private int anhosLic;
+    private String anhosLic;
     /**
      * Creates new form FrmAgregarPlaca
      */
-    public FrmAgregarUsuario(int anhosLic) {
+    public FrmAgregarUsuario(String anhosLic) {
         this.anhosLic=anhosLic;
         initComponents();
     }

@@ -49,6 +49,7 @@ public class ClienteDAO implements IClienteDAO {
             adLic.setTelefono(clientecNuevo.getTelefono());
             adLic.setAdquiereLicienciaCliente(clientecNuevo.getAdquiereLicienciaCliente());
             adLic.setVehiculo(clientecNuevo.getVehiculo());
+            adLic.setId_Cliente(idCliente);
             em.persist(adLic);
             
             System.out.println("Se actualizo correctamente");
@@ -90,14 +91,18 @@ public class ClienteDAO implements IClienteDAO {
         CriteriaQuery<Cliente> cq= cb.createQuery(Cliente.class);
         Root<Cliente> root=cq.from(Cliente.class);
         
-        cq.select(root).where(cb.equal(root.get("rfc"), RFC)).orderBy(cb.asc(root.get("rfc")));
-        Cliente resultado=em.createQuery(cq).getSingleResult();
+        cq.select(root).distinct(true).where(cb.equal(root.get("rfc"), RFC)).orderBy(cb.asc(root.get("id_Cliente")));
+        List<Cliente> resultado=em.createQuery(cq).getResultList();
         em.getTransaction().commit();
+        
         if(resultado==null){
             System.out.println("No se encontro el cliente");
             return null;
+        }else if(resultado.size()==1){
+            System.out.println("Solo se encontro 1 cliente");
+            return resultado.get(0);
         }else{
-            return resultado;
+            return resultado.getLast();
         } 
     }
     

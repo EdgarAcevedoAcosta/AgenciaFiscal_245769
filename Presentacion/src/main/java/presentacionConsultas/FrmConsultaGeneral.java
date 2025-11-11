@@ -108,12 +108,10 @@ public class FrmConsultaGeneral extends javax.swing.JFrame {
 
         txtNombre.setBackground(new java.awt.Color(255, 255, 255));
         txtNombre.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        txtNombre.setText("jTextField1");
         txtNombre.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         txtRFC.setBackground(new java.awt.Color(255, 255, 255));
         txtRFC.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        txtRFC.setText("jTextField1");
         txtRFC.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jScrollPane1.setBackground(new java.awt.Color(51, 51, 51));
@@ -233,27 +231,65 @@ public class FrmConsultaGeneral extends javax.swing.JFrame {
     private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
         // TODO add your handling code here:
         Cliente cliente = null;
-        if(txtNombre.getText() != null || txtRFC.getText() != null){
-            if(txtRFC.getText() != null && txtNombre.getText() == null){
+        
+            if(txtRFC.getText() != null){
                 String regex = "^[A-Z&Ñ]{3,4}[0-9]{6}[A-Z0-9]{3}$";
                 Pattern pattern = Pattern.compile(regex);
                 Matcher matcher = pattern.matcher(txtRFC.getText().toUpperCase());
                 if(matcher.matches()){
-                    cliente=new Dao.ClienteDAO().consultaRFC(txtRFC.getText());
+                    //cliente=new Dao.ClienteDAO().consultaRFC(txtRFC.getText());
+                    
+                    List<Cliente> cs= new ArrayList<Cliente>();
+                    //List<Cliente> listaCl= new Dao.ClienteDAO().consultarTodos();
+                    Cliente sg=new Dao.ClienteDAO().consultaRFC(txtRFC.getText());
+                    //Cliente sd=new Cliente();
+                    cs.add(sg);
+                    /*for (int i = 0; i < listaCl.size(); i++) {
+                        sd= listaCl.get(i);
+                        if(sd.getRfc()==txtRFC.getText()){
+                            cs.add(new Dao.ClienteDAO().consultar(sd.getId_Cliente()));
+                            
+                        }
+                    }*/
+                    
+                    if(cs==null || cs.isEmpty()){
+                        JOptionPane.showMessageDialog(this, "No existe el Cliente", "Advertencia!!", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    DefaultTableModel modelo =convertir.ClienteTableModel(cs);
+                    despliegaTabla( new Tabla());
+                    Tabla TablaClientes=new Tabla("Lista de Clientes", modelo );
+                    despliegaTabla(TablaClientes);
+                    
                 }else{
                     JOptionPane.showMessageDialog(this, "Advertencia!!", "La el RFC no es Valido", JOptionPane.INFORMATION_MESSAGE);
                 }
-            }else if(txtRFC.getText() == null && txtNombre.getText() != null){
-                cliente=new Dao.ClienteDAO().consultaNombre(txtNombre.getText());
             }
-        }else{
-            JOptionPane.showMessageDialog(this, "Advertencia!!", "El Nombre Completo o El RFC esta Vacio", JOptionPane.INFORMATION_MESSAGE);
-        }
-        List<Cliente> lista=new ArrayList<Cliente>();
-        lista.add(cliente);
-        DefaultTableModel modelo =convertir.ClienteTableModel(lista);
-        Tabla TablaClientes=new Tabla("Lista de Clientes", modelo );
-        despliegaTabla(TablaClientes);
+//            else if(txtRFC.getText() == null && txtNombre.getText() != null){
+//                //cliente=new Dao.ClienteDAO().consultaNombre(txtNombre.getText());
+//                List<Cliente> cs= new ArrayList<Cliente>();
+//                List<Cliente> css= new Dao.ClienteDAO().consultarTodos();
+//                Cliente sg=new Cliente();
+//                for (int i = 0; i < css.size(); i++) {
+//                    Cliente sd= css.get(i);
+//                    if(sd.getNombreCompleto()==txtNombre.getText()){
+//                        cs.add(new Dao.ClienteDAO().consultar(sd.getId_Cliente()));
+//                    }
+//                }
+//                cs.add(new Dao.ClienteDAO().consultar(sg.getId_Cliente()));
+//                if(cs==null || cs.isEmpty()){
+//                    JOptionPane.showMessageDialog(this, "No existe el Cliente", "Advertencia!!", JOptionPane.INFORMATION_MESSAGE);
+//                }
+//                DefaultTableModel modelo =convertir.ClienteTableModel(cs);
+//                despliegaTabla( new Tabla());
+//                Tabla TablaClientes=new Tabla("Lista de Clientes", modelo );
+//                despliegaTabla(TablaClientes);
+//            }
+        
+//        List<Cliente> lista=new ArrayList<Cliente>();
+//        lista.add(cliente);
+//        DefaultTableModel modelo =convertir.ClienteTableModel(lista);
+//        Tabla TablaClientes=new Tabla("Lista de Clientes", modelo );
+//        despliegaTabla(TablaClientes);
     }//GEN-LAST:event_btnFiltrarActionPerformed
 
     private void btnFiltrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrar1ActionPerformed
@@ -261,29 +297,40 @@ public class FrmConsultaGeneral extends javax.swing.JFrame {
         //FrmCostosPlacas frm=new FrmCostosPlacas(cliente, tipoDeConsulta);
         //frm.setVisible(true);
         Cliente cliente = null;
-        if(txtNombre.getText() != null){
-            if(txtRFC.getText() != null){
-                String regex = "^[A-Z&Ñ]{3,4}[0-9]{6}[A-Z0-9]{3}$";
-                Pattern pattern = Pattern.compile(regex);
-                Matcher matcher = pattern.matcher(txtRFC.getText().toUpperCase());
-                if(matcher.matches()){
-                    cliente=new Dao.ClienteDAO().consultaRFC(txtRFC.getText());
-                    
-                }else{
-                    JOptionPane.showMessageDialog(this, "Advertencia!!", "La el RFC no es Valido", JOptionPane.INFORMATION_MESSAGE);
-                }
-            }else{
-                cliente=new Dao.ClienteDAO().consultaNombre(txtNombre.getText());
-            }
-        }else{
-            JOptionPane.showMessageDialog(this, "Advertencia!!", "El Nombre Completo o El RFC esta Vacio", JOptionPane.INFORMATION_MESSAGE);
-        }
-        if(cliente != null){
-            FrmCostosPlacas frm=new FrmCostosPlacas(cliente, tipoDeConsulta);
-            frm.setVisible(true);
-            dispose();
-        }else{
-            JOptionPane.showMessageDialog(this, "Advertencia!!", "El Cliente no Existe o No hay Clientes", JOptionPane.INFORMATION_MESSAGE);
+        
+        if(txtRFC.getText() != null ){
+            String regex = "^[A-Z&Ñ]{3,4}[0-9]{6}[A-Z0-9]{3}$";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(txtRFC.getText().toUpperCase());
+            if(matcher.matches()){
+                List<Cliente> cs= new ArrayList<Cliente>();
+                //List<Cliente> listaCl= new Dao.ClienteDAO().consultarTodos();
+                Cliente sg=new Dao.ClienteDAO().consultaRFC(txtRFC.getText());
+                //Cliente sd=new Cliente();
+                cs.add(sg);
+                FrmCostosPlacas frm=new FrmCostosPlacas(sg, tipoDeConsulta);
+                frm.setVisible(true);
+                dispose();
+
+            
+//        }else{
+//            //cliente=new Dao.ClienteDAO().consultaNombre(txtNombre.getText());
+//            List<Cliente> cs= new ArrayList<Cliente>();
+//            List<Cliente> css= new Dao.ClienteDAO().consultarTodos();
+//            Cliente sg=new Cliente();
+//            for (int i = 0; i < css.size(); i++) {
+//                Cliente sd=css.get(i);
+//                if(sd.getNombreCompleto()==txtNombre.getText()){
+//                    sg=css.get(i);
+//                }
+//            }
+//            cs.add(sg);
+//            
+//            FrmCostosPlacas frm=new FrmCostosPlacas(sg, tipoDeConsulta);
+//            frm.setVisible(true);
+//            dispose();
+          }
+
         }
         
     }//GEN-LAST:event_btnFiltrar1ActionPerformed

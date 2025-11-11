@@ -8,6 +8,7 @@ import entities.Automovil;
 import entities.CatalogoMarcaLinea;
 import entities.Empaca;
 import entities.PlacasCosto;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,18 +24,54 @@ public class FrmInformacionPlaca extends javax.swing.JFrame {
         this.placa=placa;
         initComponents();
         Empaca au= new Dao.EmpacaDAO().consultaNombre(placa);
-        //List<Automovil> lista=au.getAutomovil();
+        List<Empaca> lids= new Dao.EmpacaDAO().consultarTodas();
+        Empaca ds=null;
+        Empaca dsd=null;
+        for (int i = 0; i < lids.size(); i++) {
+            ds=lids.get(i);
+            if(ds.getNombrePlaca()== placa){
+                dsd=lids.get(i);
+            }
+        }
+        
+        List<Automovil> ld=new Dao.AutomovilDAO().consultarTodas();
+        Automovil dsaf=null;
+        Automovil Buscado=null;
+        for (int i = 0; i < ld.size(); i++) {
+            dsaf= ld.get(i);
+            if(dsaf.getEmpaca()==dsd){
+                Buscado=ld.get(i);
+            }
+        }
+        if(Buscado==null){
+            jLabel6.setText("Sin Informacion");
+            jLabel8.setText("Sin Informacion");
+            jLabel10.setText("Sin Informacion");
+            jLabel12.setText("Sin Informacion");
+            jLabel14.setText("Sin Informacion");
+        }else{
+            jLabel6.setText(Buscado.getCatalogoMarcaLinea().getMarca());
+            jLabel8.setText(Buscado.getNumeroSerie());
+            jLabel10.setText(Buscado.getCatalogoMarcaLinea().getLinea());
+            jLabel12.setText(Buscado.getColor());
+            jLabel14.setText(Buscado.getCatalogoMarcaLinea().getModelo());
+        }
         Automovil car=new Dao.AutomovilDAO().consultaEmplalca(au);
         CatalogoMarcaLinea cat= car.getCatalogoMarcaLinea();
         //PlacasCosto cl=
+         
         
-        jLabel4.setText(au.getEstado());
-        jLabel6.setText(cat.getMarca());
-        jLabel8.setText(car.getNumeroSerie());
-        jLabel10.setText(cat.getLinea());
-        jLabel12.setText(car.getColor());
-        jLabel14.setText(cat.getModelo());
-        //jLabel6.setText(au.getPlacasCosto);
+        jLabel4.setText(dsd.getEstado());
+//        List<PlacasCosto> lC=new Dao.PlacasCostosDAO().consultarTodas();
+//        PlacasCosto c=null;
+//        PlacasCosto m=null;
+//        for (int i = 0; i < lC.size(); i++) {
+//            c=lC.get(i);
+//            if(c.getEmpacaCosto()== dsd){
+//                c=lC.get(i);
+//            }
+//        }
+//        //jLabel6.setText(dsd);
     }
 
     /**

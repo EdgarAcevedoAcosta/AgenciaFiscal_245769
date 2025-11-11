@@ -12,7 +12,7 @@ import presentacionConsultas.FrmCostosLicencias;
  * @author edgar
  */
 public class FrmSolicitudLicencia extends javax.swing.JFrame {
-    private int anhosLic;
+    private String anhosLic;
     /**
      * Creates new form FrmSolicitudLicencia
      */
@@ -170,8 +170,8 @@ public class FrmSolicitudLicencia extends javax.swing.JFrame {
 
     private void btnHacerUnAnhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHacerUnAnhoActionPerformed
         // TODO add your handling code here:
-        anhosLic=1;
-        FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion(anhosLic);
+        anhosLic="1";
+        FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion("1");
         frmSol.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnHacerUnAnhoActionPerformed
@@ -183,24 +183,24 @@ public class FrmSolicitudLicencia extends javax.swing.JFrame {
 
     private void btnHacerDosAnhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHacerDosAnhoActionPerformed
         // TODO add your handling code here:
-        anhosLic=2;
-        FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion(anhosLic);
+        anhosLic="2";
+        FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion("2");
         frmSol.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnHacerDosAnhoActionPerformed
 
     private void btnHacerTresAnho1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHacerTresAnho1ActionPerformed
         // TODO add your handling code here:
-        anhosLic=3;
-        FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion(anhosLic);
+        anhosLic="3";
+        FrmSolicitudLicenciaInformacion frmSol= new FrmSolicitudLicenciaInformacion("3");
         frmSol.setVisible(true); 
         dispose();
     }//GEN-LAST:event_btnHacerTresAnho1ActionPerformed
 
     private void btnCostosLicenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCostosLicenciasActionPerformed
         // TODO add your handling code here:
-        new presentacionConsultas.FrmConsultarPlaca();
-        dispose();
+        new presentacionConsultas.FrmCostosLicencias();
+        
     }//GEN-LAST:event_btnCostosLicenciasActionPerformed
 
     

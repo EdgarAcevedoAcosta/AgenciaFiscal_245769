@@ -35,9 +35,11 @@ public class FrmCostosPlacas extends javax.swing.JFrame {
         initComponents();
         if(tipoDeConsulta=="Licencia"){
             jLabel1.setText("Consulta de Licencias");
+            despliegaTabla( new Tabla());
             tablaClientesAquisicionLiciencia();
         }else{
             jLabel1.setText("Consulta de Placas Compradas");
+            despliegaTabla( new Tabla());
             tablaClientesEmplaca();
         }
     }
@@ -45,10 +47,16 @@ public class FrmCostosPlacas extends javax.swing.JFrame {
     public void tablaClientesEmplaca(){
         //Vehiculo veh=new Automovil();
         //emplaca=cliente
-        List<Cliente> lsita=new ArrayList<Cliente>();
-        lsita.add(cliente);
-        List<Automovil> listaA=new Dao.AutomovilDAO().consultaClientesAd(lsita);
-        List<Empaca> listaE=new Dao.EmpacaDAO().consultarAutomoviles(listaA);
+//        List<Cliente> cs= new ArrayList<Cliente>();
+//        //List<Cliente> listaCl= new Dao.ClienteDAO().consultarTodos();
+//        Cliente sg=new Dao.ClienteDAO().consultaRFC(cliente.getRfc());
+//        //Cliente sd=new Cliente();
+//        cs.add(sg);
+//        Automovil listaA=new Dao.AutomovilDAO().consultaClientesAd(cs);
+//        List<Automovil> listaf=new ArrayList<Automovil>();
+//        listaf.add(listaA);
+        List<Empaca> listaE=new Dao.EmpacaDAO().consultarTodas();
+        
         if(listaE == null || listaE.isEmpty()){
                 JOptionPane.showMessageDialog(this, "No hay Placas Compradas.","Informacion", JOptionPane.ERROR_MESSAGE);
          }
@@ -57,11 +65,11 @@ public class FrmCostosPlacas extends javax.swing.JFrame {
         despliegaTabla(TablaClientes);
     }
     public void tablaClientesAquisicionLiciencia(){
-        adq= cliente.getAdquiereLicienciaCliente();
-        List<Cliente> lsita=new ArrayList<Cliente>();
-        lsita.add(cliente);
+        //AdquiereLiciencia adq= cliente.getAdquiereLicienciaCliente();
+//        List<Cliente> lsita=new ArrayList<Cliente>();
+//        lsita.add(new Dao.ClienteDAO().consultaRFC(cliente.getRfc()));
         
-        List<AdquiereLiciencia> listaAdL= new Dao.AdquiereLicenciaDAO().consultaClientesAd(lsita);
+        List<AdquiereLiciencia> listaAdL= new Dao.AdquiereLicenciaDAO().consultarTodas();
         if(listaAdL == null || listaAdL.isEmpty()){
                 JOptionPane.showMessageDialog(this, "No hay Clientes registrados.","Informacion", JOptionPane.ERROR_MESSAGE);
          }

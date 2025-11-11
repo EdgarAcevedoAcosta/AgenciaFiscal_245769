@@ -36,6 +36,24 @@ public class AutomovilDAO implements IAutomovilDAO{
         em.getTransaction().commit();
         System.out.println("Se agrego Adquiere Licencia");
     }
+    
+    public void actualizar(Long idAuto, Automovil AutocNuevo) {
+        EntityManager em = managerFactory.createEntityManager();
+        em.getTransaction().begin();
+        Automovil adLic=em.find(Automovil.class, idAuto);
+        if(adLic!=null){
+            adLic.setCatalogoMarcaLinea(AutocNuevo.getCatalogoMarcaLinea());
+            adLic.setCliente(AutocNuevo.getCliente());
+            adLic.setColor(AutocNuevo.getColor());
+            adLic.setEmpaca(AutocNuevo.getEmpaca());
+            adLic.setId_Vehiculo(idAuto);
+            adLic.setNumeroSerie(AutocNuevo.getNumeroSerie());
+            em.persist(adLic);
+            
+            System.out.println("Se actualizo correctamente");
+        }
+        em.getTransaction().commit();
+    }
 
     @Override
     public Automovil consultar(Long idAuto) {
@@ -82,7 +100,7 @@ public class AutomovilDAO implements IAutomovilDAO{
             return resultado;
         } 
     }
-    public List<Automovil> consultaClientesAd(List<Cliente> cliente){
+    public Automovil consultaClientesAd(List<Cliente> cliente){
         EntityManager em = managerFactory.createEntityManager();
         em.getTransaction().begin();
         CriteriaBuilder cb=em.getCriteriaBuilder();
@@ -95,10 +113,15 @@ public class AutomovilDAO implements IAutomovilDAO{
         if(resultado==null){
             System.out.println("No se encontro el Automovil");
             return null;
+        }else if(resultado.size()==1){
+            System.out.println("Solo se encontro 1 cliente");
+            return resultado.get(0);
         }else{
-            return resultado;
+            return resultado.getLast();
         } 
     }
+    
+    
     
     public List<Automovil> consultaClientesId(Cliente cliente){
         EntityManager em = managerFactory.createEntityManager();

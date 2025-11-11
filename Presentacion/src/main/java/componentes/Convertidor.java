@@ -16,7 +16,7 @@ public class Convertidor {
     //String nombresColumnaTablaCostosPlacas[]={"Tramite", "Costo Normal"};
     //String nombresColumnaTablaCostosLicencias[]={"Vigencia", "Costo Normal", "Costo por Discapacidad"};
     String nombresColumnaTablaMarcasAuto[]={"id_CatalogoMarcaLinea", "Marca", "Linea","Modelo"};
-    String nombresColumnaTablaCliente[]={"id_Cliente", "Nombre Completo", "RFC","Fecha de Nacimiento","Telefono","Discapacidad"};
+    String nombresColumnaTablaCliente[]={"id_Cliente", "Nombre Completo", "RFC","Fecha de Nacimiento","Telefono","Discapacidad", "Tiene Licencia"};
     String nombresColumnaTablaAutos[]={"id_Vehiculo", "Numero de Serie", "Color", "Estado", "Nombre Placa"};
     String nombresColumnaTablaAdquiereLic[]={"id_Licencia", "Vigencia", "Fecha de Compra","Fecha de Expiracion","Costo Total", "Total Gastado"};
     String nombresColumnaTablaEmplaca[]={"id_Placa",  "Nombre de Placa", "Fecha de Emision","Fecha de Recepcion","Estado", "Costo Total"};
@@ -44,11 +44,15 @@ public class Convertidor {
     public DefaultTableModel ClienteTableModel(List<Cliente> listaClientes) {
         Object tabla[][];
         if (listaClientes != null) {
-            tabla = new Object[listaClientes.size()][6];
+            tabla = new Object[listaClientes.size()][7];
             for (int i = 0; i < listaClientes.size(); i++) {
                 // Obten una medico de la lista de medicos
                 Cliente catalogo = listaClientes.get(i);
                 // Almacena sus atributos en la fila del arreglo
+                String lic="No Tinene";
+                if(catalogo.getAdquiereLicienciaCliente()!=null){
+                    lic="Si Tiene " + catalogo.getAdquiereLicienciaCliente().getId_Licencia();
+                }
 
                 tabla[i][0] = catalogo.getId_Cliente();
                 tabla[i][1] = catalogo.getNombreCompleto();
@@ -56,6 +60,7 @@ public class Convertidor {
                 tabla[i][3] = catalogo.getFechaNacimiento();
                 tabla[i][4] = catalogo.getTelefono();
                 tabla[i][5] = catalogo.getDiscapacidad();
+                tabla[i][6]= lic;
 
             }
             return new DefaultTableModel(tabla, nombresColumnaTablaCliente);
@@ -87,7 +92,7 @@ public class Convertidor {
     public DefaultTableModel AquiereLicenTableModel(List<AdquiereLiciencia> listaAutos) {
         Object tabla[][];
         if (listaAutos != null) {
-            tabla = new Object[listaAutos.size()][4];
+            tabla = new Object[listaAutos.size()][5];
             double total=0.0;
             for (int i = 0; i < listaAutos.size(); i++) {
                 // Obten una medico de la lista de medicos

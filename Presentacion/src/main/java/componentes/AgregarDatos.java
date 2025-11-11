@@ -8,6 +8,7 @@ import Dao.ClienteDAO;
 import Dao.IClienteDAO;
 import entities.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -84,20 +85,24 @@ public class AgregarDatos {
     public void AgregarLicencias(){
         AdquiereLiciencia ad=new AdquiereLiciencia();
         //deberia poner
-        ad.setCliente(new Dao.ClienteDAO().consultarTodos());
+        List<Cliente> lis= new ArrayList<Cliente>(); 
+        lis.add(new Dao.ClienteDAO().consultar(Long.valueOf(1)));
+        ad.setCliente(lis);
         LocalDate fechaCompra= LocalDate.parse("2010-07-15");
         LocalDate fechaE= LocalDate.parse("2011-07-15");
         ad.setFechaCompra(fechaCompra);
         ad.setFechaExpiración(fechaE);
         ad.setVigencia(1);
-        ad.setLicenciaCostos(new Dao.LicienciaCostosDAO().consultarTodas());
+        List<LicenciaCostos> lisrtt= new ArrayList<LicenciaCostos>();
+        lisrtt.add(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(1)));
+        ad.setLicenciaCostos(lisrtt);
         ad.setCostoTotal(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(1)).getCosto());
         new Dao.AdquiereLicenciaDAO().agregar(ad);
-        IClienteDAO pers= new ClienteDAO();
-        Cliente cl=pers.consultar(Long.valueOf(1));
+
+        Cliente clf=new Dao.ClienteDAO().consultar(Long.valueOf(1));
+        clf.setAdquiereLicienciaCliente(ad);
         
-        cl.setAdquiereLicienciaCliente(ad);
-        pers.actualizar(Long.valueOf(1), cl);
+        new Dao.ClienteDAO().actualizar(Long.valueOf(1), clf);
         
         
     }
@@ -120,7 +125,9 @@ public class AgregarDatos {
         cat1.setMarca("Toyota");
         cat1.setLinea("Sedanes");
         cat1.setModelo("Corrolla");
-        cat1.setVehiculos(new Dao.VehiculosDAO().consultarTodas());
+        List<Vehiculo> li=new ArrayList<Vehiculo>();
+        li.add(new Dao.VehiculosDAO().consultar(Long.valueOf(1)));
+        cat1.setVehiculos(li);
         new Dao.CatalogoMarcaLineaDAO().agregar(cat1);
         CatalogoMarcaLinea cat2=new CatalogoMarcaLinea();
         cat2.setMarca("Toyota");
@@ -154,12 +161,17 @@ public class AgregarDatos {
         emplaca.setFechaRecepcion(fechaE);
         emplaca.setNombrePlaca("FASF-987");
         //validacion de lista de un solo id
-        emplaca.setPlacasCosto(new Dao.PlacasCostosDAO().consultarTodas());
+        List<PlacasCosto> li=new ArrayList<PlacasCosto>();
+        li.add(new Dao.PlacasCostosDAO().consultar(Long.valueOf(1)));
+        emplaca.setPlacasCosto(li);
         // Creo q debeira ser una lista de los automoviles de un cliente
         //Automovil as=new Dao.AutomovilDAO()
         // Lista de autos  llamando al autos dao.idCliente         
         Cliente c= new Dao.ClienteDAO().consultar(Long.valueOf(1));
-        emplaca.setAutomovil(new Dao.AutomovilDAO().consultarTodas()); 
+        
+        List<Automovil> as=new ArrayList<Automovil>();
+        as.add(new Dao.AutomovilDAO().consultar(Long.valueOf(1)));
+        emplaca.setAutomovil(as); 
         new Dao.EmpacaDAO().agregar(emplaca);
         
         //c.setVehiculo(new Dao.VehiculosDAO().consultaClientesId(c));

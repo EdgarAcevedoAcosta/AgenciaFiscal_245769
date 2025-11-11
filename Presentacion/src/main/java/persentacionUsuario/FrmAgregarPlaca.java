@@ -10,6 +10,8 @@ import entities.Cliente;
 import entities.Empaca;
 import entities.PlacasCosto;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -35,10 +37,11 @@ public class FrmAgregarPlaca extends javax.swing.JFrame {
             idTramite=Long.valueOf(1);
         }else{
             idTramite=Long.valueOf(2);
-            txtNumSerie1.setEditable(false);
-            txtPlaca1.setEditable(false);
-            txtPlaca2.setEditable(false);
-            txtPlaca3.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Debe de Poner solo el Nombre de la Placa, el Numero de Serie y su RFC", "Advertencia!!", JOptionPane.INFORMATION_MESSAGE);
+            //txtNumSerie1.setEditable(false);
+            //txtPlaca1.setEditable(false);
+            //txtPlaca2.setEditable(false);
+            //txtPlaca3.setEditable(false);
         }
         initComponents();
     }
@@ -304,33 +307,72 @@ public class FrmAgregarPlaca extends javax.swing.JFrame {
                 Pattern pattern = Pattern.compile(regex);
                 Matcher matcher = pattern.matcher(txtNumSerie2.getText().toUpperCase());
                 if(matcher.matches()){
-                    cliente= new Dao.ClienteDAO().consultaRFC(txtNumSerie2.getText());
+                    
+                    List<Cliente> css= new Dao.ClienteDAO().consultarTodos();
+                    Cliente sg=null;
+                    for (int i = 0; i < css.size(); i++) {
+                        Cliente sd=css.get(i);
+                        if(sd.getRfc()==txtNumSerie2.getText()){
+                            sg=css.get(i);
+                        }
+                    }
                     CatalogoMarcaLinea catalogoMarcaLinea =new CatalogoMarcaLinea();
                     catalogoMarcaLinea= new Dao.CatalogoMarcaLineaDAO().
                             consultaCatalogo(txtPlaca1.getText(), txtPlaca2.getText(), txtPlaca3.getText());
+                    
                     if(catalogoMarcaLinea==null){
                         JOptionPane.showMessageDialog(this, "Advertencia!!", "La Numero de Serie Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
                         dispose();
                     }
+                    List<CatalogoMarcaLinea> listaCt=new Dao.CatalogoMarcaLineaDAO().consultarTodas();
+                    CatalogoMarcaLinea nb=null;
+                    CatalogoMarcaLinea busc=null;
+                    for (int i = 0; i < listaCt.size(); i++) {
+                        nb=listaCt.get(i);
+                        if(nb.getLinea()==txtPlaca2.getText() && nb.getMarca()==txtPlaca1.getText() && nb.getModelo()==txtPlaca3.getText()){
+                            busc=listaCt.get(i);
+                        }
+                    }
+                    if(busc==null){
+                        JOptionPane.showMessageDialog(this, "Advertencia!!", "Te Estas Equivocando en el Catalogo del Vehiculo", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    emplaca= new Empaca();
                     Automovil auto=new Automovil();
-                    auto.setCliente(cliente);
+                    auto.setCliente(sg);
                     auto.setColor(txtNumSerie1.getText());
                     auto.setNumeroSerie(txtNumSerie.getText());
                     auto.setCatalogoMarcaLinea(catalogoMarcaLinea);
+                    new Dao.AutomovilDAO().agregar(auto);
                     PlacasCosto costo=new PlacasCosto();
                     costo= new Dao.PlacasCostosDAO().consultar(idTramite);
                     auto.setCatalogoMarcaLinea(catalogoMarcaLinea);
                     //auto= new Dao.AutomovilDAO()
                     emplaca.setEstado("Activo");
                     emplaca.setNombrePlaca(txtPlaca.getText());
-                    emplaca.setPlacasCosto(new Dao.PlacasCostosDAO().consultarTodas());
-                    emplaca.setAutomovil(new Dao.AutomovilDAO().consultarTodas());
+                    PlacasCosto dfs= new Dao.PlacasCostosDAO().consultar(idTramite);
+                    List<PlacasCosto> das=new ArrayList<PlacasCosto>();
+                    das.add(dfs);
+                    emplaca.setPlacasCosto(das);
+                    List<Automovil> LISTA=new Dao.AutomovilDAO().consultarTodas();
+                    Automovil bus=null;
+                    for (int i = 0; i < LISTA.size(); i++) {
+                        Automovil ds= LISTA.get(i);
+                        if(ds.getNumeroSerie()==auto.getNumeroSerie()){
+                            bus= LISTA.get(i);
+                        }
+                    }
+                    List<Automovil> fes=new ArrayList<Automovil>();
+                    fes.add(bus);
+                    emplaca.setAutomovil(fes);
                     emplaca.setCostoTotal(new Dao.PlacasCostosDAO().consultar(idTramite).getCosto());
                     emplaca.setFechaEmision(LocalDate.now());
                     emplaca.setFechaRecepcion(LocalDate.now());
+                    new Dao.EmpacaDAO().agregar(emplaca);
+                    bus.setEmpaca(emplaca);
+                    new Dao.AutomovilDAO().actualizar(bus.getId_Vehiculo(), bus);
                     if(new Dao.AutomovilDAO().consultaNumeroSerie(txtNumSerie.getText()) == null){
-                        new Dao.AutomovilDAO().agregar(auto);
-                        new Dao.EmpacaDAO().agregar(emplaca);
+                        //new Dao.AutomovilDAO().agregar(auto);
+                        
                     }else{
                         JOptionPane.showMessageDialog(this, "Advertencia!!", "El Automovil ya Existe", JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -347,54 +389,65 @@ public class FrmAgregarPlaca extends javax.swing.JFrame {
             if (txtNumSerie.getText() == null || txtNumSerie.getText().trim().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Advertencia!!", "La Numero de Serie Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
             }
-            if (txtNumSerie1.getText() == null || txtNumSerie1.getText().trim().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Advertencia!!", "El Nombre de la Placa Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
-            }
-            if (txtPlaca1.getText() == null || txtPlaca1.getText().trim().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Advertencia!!", "La Numero de Serie Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
-            }
-            if (txtPlaca2.getText() == null || txtPlaca2.getText().trim().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Advertencia!!", "El Nombre de la Placa Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
-            }
-            if (txtPlaca3.getText() == null || txtPlaca3.getText().trim().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Advertencia!!", "La Numero de Serie Rsta Vacio", JOptionPane.INFORMATION_MESSAGE);
-            }
-            if(txtNumSerie2.getText() != null && txtPlaca.getText() != null && txtNumSerie.getText() != null 
-                   && txtNumSerie1.getText() != null && txtPlaca1.getText() != null
-                    && txtPlaca2.getText() != null && txtPlaca3.getText() != null){
+            
+            
+            if(txtNumSerie2.getText() != null && txtPlaca.getText() != null && txtNumSerie.getText() != null ){
                 
                 String regex = "^[A-Z&Ñ]{3,4}[0-9]{6}[A-Z0-9]{3}$";
                 Pattern pattern = Pattern.compile(regex);
                 Matcher matcher = pattern.matcher(txtNumSerie2.getText().toUpperCase());
                 if(matcher.matches()){
                     cliente= new Dao.ClienteDAO().consultaRFC(txtNumSerie2.getText());
-                    CatalogoMarcaLinea catalogoMarcaLinea =new CatalogoMarcaLinea();
-                    catalogoMarcaLinea= new Dao.CatalogoMarcaLineaDAO().
-                            consultaCatalogo(txtPlaca1.getText(), txtPlaca2.getText(), txtPlaca3.getText());
-                    Automovil auto=new Automovil();
-                    auto= new Dao.AutomovilDAO().consultaNumeroSerie(txtNumSerie.getText());
-                    PlacasCosto costo=new PlacasCosto();
-                    costo= new Dao.PlacasCostosDAO().consultar(idTramite);
+                    List<Cliente> L=new Dao.ClienteDAO().consultarTodos();
+                    Cliente bc=null;
+                    for (int i = 0; i < L.size(); i++) {
+                        Cliente ds= L.get(i);
+                        if(ds.getRfc()==txtNumSerie2.getText()){
+                            bc= L.get(i);
+                        }
+                    }
+                    if(bc==null){
+                        JOptionPane.showMessageDialog(this, "Advertencia!!", "No existe este Cliente", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    
+                    Automovil auto=new Dao.AutomovilDAO().consultaNumeroSerie(txtNumSerie.getText());
+                    PlacasCosto costo=new Dao.PlacasCostosDAO().consultar(idTramite);;
                     //auto.setCatalogoMarcaLinea(catalogoMarcaLinea);
                     //auto= new Dao.AutomovilDAO()
                     emplaca.setEstado("Activo");
+                    
                     emplaca.setNombrePlaca(txtPlaca.getText());
-                    emplaca.setPlacasCosto(new Dao.PlacasCostosDAO().consultarTodas());
-                    emplaca.setAutomovil(new Dao.AutomovilDAO().consultarTodas());
-                    emplaca.setCostoTotal(new Dao.PlacasCostosDAO().consultar(idTramite).getCosto());
+                    PlacasCosto dfs= new Dao.PlacasCostosDAO().consultar(idTramite);
+                    List<PlacasCosto> das=new ArrayList<PlacasCosto>();
+                    das.add(dfs);
+                    emplaca.setPlacasCosto(das);
+                    List<Automovil> LISTA=new Dao.AutomovilDAO().consultarTodas();
+                    Automovil bus=null;
+                    for (int i = 0; i < LISTA.size(); i++) {
+                        Automovil ds= LISTA.get(i);
+                        if(ds.getNumeroSerie()==auto.getNumeroSerie()){
+                            bus= LISTA.get(i);
+                        }
+                    }
+                    List<Automovil> fes=new ArrayList<Automovil>();
+                    fes.add(bus);
+                    emplaca.setAutomovil(fes);
+                    emplaca.setCostoTotal(dfs.getCosto());
                     emplaca.setFechaEmision(LocalDate.now());
                     emplaca.setFechaRecepcion(LocalDate.now());
-                    if(new Dao.AutomovilDAO().consultaNumeroSerie(txtNumSerie.getText()) != null){
+                    if(new Dao.AutomovilDAO().consultaNumeroSerie(txtNumSerie.getText()) == null){
                         JOptionPane.showMessageDialog(this, "Advertencia!!", "El Automovil ya Existe", JOptionPane.INFORMATION_MESSAGE);
                         
                     }else{
                         new Dao.EmpacaDAO().agregar(emplaca);
+                        
                     }
                     
                 }
             }
             
         }
+        dispose();
         
     }//GEN-LAST:event_btnConfirmarActionPerformed
 

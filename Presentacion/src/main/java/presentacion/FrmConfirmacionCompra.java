@@ -6,9 +6,12 @@ package presentacion;
 
 import entities.AdquiereLiciencia;
 import entities.Cliente;
+import entities.LicenciaCostos;
 import entities.PlacasCosto;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,12 +22,12 @@ import java.util.logging.Logger;
 public class FrmConfirmacionCompra extends javax.swing.JFrame {
     private Cliente cliente;
     private AdquiereLiciencia adq;
-    private int an;
-    private int id;
+    private String an;
+    private Long id;
     /**
      * Creates new form FrmConfirmacionCompra
      */
-    public FrmConfirmacionCompra(Cliente cliente, int anhosLic) {
+    public FrmConfirmacionCompra(Cliente cliente, String anhosLic) {
         //maybe esto es LicCOstos
         this.cliente=cliente;
         this.an=anhosLic;
@@ -34,7 +37,7 @@ public class FrmConfirmacionCompra extends javax.swing.JFrame {
         //txtCostoTotal.setText(String.valueOf(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(id)).getCosto()));
         initComponents();
         adq=new AdquiereLiciencia();
-        id =an;
+        id =Long.parseLong(an);
         if(cliente.getDiscapacidad()=="true"){
             id=id+1;
         }
@@ -203,21 +206,54 @@ public class FrmConfirmacionCompra extends javax.swing.JFrame {
         // TODO add your handling code here: 
         // Validacion que no pude a hacer dicencia
         
-        adq.setVigencia(an);
+        adq.setVigencia(Integer.valueOf(an));
         
-        adq.setCostoTotal(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(id)).getCosto());
-        
-        adq.setCliente(new Dao.ClienteDAO().consultarTodos());
+        Cliente dgg= new Dao.ClienteDAO().consultaRFC(cliente.getRfc());
+        List<Cliente> dsf=new ArrayList<Cliente>();
+        dsf.add(dgg);
+        adq.setCliente(dsf);
         adq.setFechaCompra(LocalDate.now());
         LocalDate fecha=LocalDate.now();
-        fecha.plusYears(an);
-        adq.setFechaExpiración(fecha);
-        adq.setLicenciaCostos(new Dao.LicienciaCostosDAO().consultarTodas());
-        adq.setCostoTotal(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(an)).getCosto());
+        fecha.plusYears(Integer.valueOf(an));
+        adq.setFechaExpiración(adq.getFechaCompra().plusYears(Integer.valueOf(an)));
+        List<LicenciaCostos> ds=new ArrayList<LicenciaCostos>();
+        Long idCs;
+        if(Integer.valueOf(an)==1 && cliente.getDiscapacidad()=="true"){
+            idCs=Long.valueOf(2);
+        }else{
+            idCs=Long.valueOf(1);
+        }
+        if(Integer.valueOf(an)==2 && cliente.getDiscapacidad()=="true"){
+            idCs=Long.valueOf(4);
+        }else{
+            idCs=Long.valueOf(3);
+        }
+        if(Integer.valueOf(an)==3 && cliente.getDiscapacidad()=="true"){
+            idCs=Long.valueOf(6);
+        }else{
+            idCs=Long.valueOf(5);
+        }
+        ds.add(new Dao.LicienciaCostosDAO().consultar(idCs));
+        adq.setLicenciaCostos(ds);
+        adq.setCostoTotal(new Dao.LicienciaCostosDAO().consultar(Long.valueOf(idCs)).getCosto());
+
+        //LicanciaCosto
+        adq.setCostoTotal(new Dao.LicienciaCostosDAO().consultar(idCs).getCosto());
+        
         //validacion
-        new Dao.AdquiereLicenciaDAO().agregar(adq); 
+        new Dao.AdquiereLicenciaDAO().agregar(adq);
+        List<AdquiereLiciencia> ads=new Dao.AdquiereLicenciaDAO().consultarTodas();
+        AdquiereLiciencia lic=null;
+        AdquiereLiciencia liCom=null;
+        for (int i = 0; i < ads.size(); i++) {
+            lic=ads.get(i);
+            if(lic.getFechaCompra()==adq.getFechaCompra()){
+                liCom=ads.get(i);
+            }
+        }
         
-        
+        dgg.setAdquiereLicienciaCliente(new Dao.AdquiereLicenciaDAO().consultar(liCom.getId_Licencia()));
+        new Dao.ClienteDAO().actualizar(dgg.getId_Cliente(), dgg);
         dispose();
     }//GEN-LAST:event_btnConfirmarActionPerformed
 

@@ -5,9 +5,12 @@
 package persentacionUsuario;
 
 import entities.AdquiereLiciencia;
+import entities.Automovil;
 import entities.Cliente;
 import entities.PlacasCosto;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -21,11 +24,11 @@ import presentacion.FrmConfirmacionCompra;
  */
 public class FrmSolicitudLicenciaInformacion extends javax.swing.JFrame {
     private  Cliente cliente;
-    private int ahnosLic;
+    private String ahnosLic;
     /**
      * Creates new form FrmSolicitudLicenciaInformacion
      */
-    public FrmSolicitudLicenciaInformacion(int ahnosLic) {
+    public FrmSolicitudLicenciaInformacion(String ahnosLic) {
         this.ahnosLic = ahnosLic;
         initComponents();
     }
@@ -183,11 +186,17 @@ public class FrmSolicitudLicenciaInformacion extends javax.swing.JFrame {
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(jTextField1.getText().toUpperCase());
             if(matcher.matches()){
-                Cliente cl=new Cliente();
+                
                 //AdquiereLiciencia ps=new AdquiereLiciencia();
-                cl= new Dao.ClienteDAO().consultaRFC(jTextField1.getText());
+                //cl= new Dao.ClienteDAO().consultaRFC(jTextField1.getText());
+                
+                Cliente bus=new Cliente();
+                bus.setRfc(jTextField1.getText());
+                
+                
+                //Cliente cl=new Dao.ClienteDAO().consultar(bus);
                 //ps= new Dao.AdquiereLicenciaDAO().consultar(Long.valueOf(ahnosLic));
-                FrmConfirmacionCompra frm=new FrmConfirmacionCompra(cl, ahnosLic);
+                FrmConfirmacionCompra frm=new FrmConfirmacionCompra(bus, ahnosLic);
                 frm.setVisible(true);
                 dispose();
 
